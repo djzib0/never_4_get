@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import { Entry, User } from "./models";
 import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
+import { signIn } from "@/auth";
 
 export const addEntry = async () => {
     const title = "Test title"
@@ -39,13 +40,13 @@ export const addUser = async () => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const login = async (prevState: any, formData: FormData) => {
+    'use server'
     const username = formData.get("username");
-    const password = formData.get("password")
+    const password = formData.get("password");
 
     try {
-        console.log(username)
-        console.log(password)
-        return {error: "something went wrong"}
+        await signIn("credentials", {username, password})
+        revalidatePath("/")
     } catch (error) {
         return {error: error}   
     }
