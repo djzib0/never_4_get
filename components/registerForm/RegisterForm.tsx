@@ -1,26 +1,42 @@
 'use client'
 import { registerNewUser } from '@/lib/actions'
-import React, { useActionState } from 'react'
+import React, { useActionState, useState } from 'react'
 
 const RegisterForm = () => {
 
   const [state, formAction] = useActionState(registerNewUser, {
-    userName: "",
+    username: "",
     password: "",
     passwordRepeat: "",
     email: "",
-    errors: "",
+    errors: ""
   })
+
+
+  // handling hidden data which will not be provided by user
+  const [hiddenFormData, setHiddenFormData] = useState({
+    img: "",
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
+    const {name, value, type} = e.target
+    setHiddenFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" && (e.target instanceof HTMLInputElement) ? e.target.checked : value,
+      }
+    })
+  }
 
   return (
     <>
       <form action={formAction}>
 
-        <label htmlFor='userName'>Username</label>
+        <label htmlFor='username'>username</label>
         <input
           type='text'
-          id='userName'
-          name='userName'
+          id='username'
+          name='username'
           required
         />
 
@@ -52,6 +68,8 @@ const RegisterForm = () => {
           type='img'
           id='img'
           name='img'
+          value={hiddenFormData.img}
+          onChange={handleChange}
           hidden
         />
       <button type='submit'>Register</button>

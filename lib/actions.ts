@@ -23,7 +23,7 @@ export const addUser = async () => {
     try {
         connectToDb();
         const newUser = new User({
-            userName: "batman",
+            username: "batman",
             password: "test123",
             email: "batman@email.com",
             img: "",
@@ -38,10 +38,24 @@ export const addUser = async () => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const login = async (prevState: any, formData: FormData) => {
+    const username = formData.get("username");
+    const password = formData.get("password")
+
+    try {
+        console.log(username)
+        console.log(password)
+        return {error: "something went wrong"}
+    } catch (error) {
+        return {error: error}   
+    }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const registerNewUser = async (prevState: any, formData: FormData) => {
     'use server'
-    console.log("I'm here")
-    const userName = formData.get("userName");
+
+    const username = formData.get("username");
     const password = formData.get("password");
     const passwordRepeat = formData.get("passwordRepeat");
     const email = formData.get("email");
@@ -53,7 +67,7 @@ export const registerNewUser = async (prevState: any, formData: FormData) => {
 
     try {
         connectToDb();
-        const user = await User.findOne({userName});
+        const user = await User.findOne({username});
 
         if (user) {
             return {error: "User already exists"}
@@ -69,7 +83,7 @@ export const registerNewUser = async (prevState: any, formData: FormData) => {
         const hashedPassword = await bcrypt.hash(password as string, salt)
 
         const newUser = new User({
-            userName,
+            username,
             password: hashedPassword,
             email,
             img,
@@ -77,7 +91,7 @@ export const registerNewUser = async (prevState: any, formData: FormData) => {
 
         await newUser.save();
         
-        return {success: true}
+        return {...prevState, success: true}
 
     } catch (error) {
         console.log(error)

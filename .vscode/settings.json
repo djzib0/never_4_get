@@ -1,0 +1,16 @@
+{
+    "folder-color.pathColors": [
+        {
+            "folderPath": "never_4_get\\components\\",
+            "color": "foldercolorizer.color_00ff00"
+        },
+        {
+            "folderPath": "never_4_get\\app\\(root)\\",
+            "color": "foldercolorizer.color_ff9933"
+        },
+        {
+            "folderPath": "never_4_get\\app\\api\\",
+            "color": "foldercolorizer.color_33ccff"
+        }
+    ]
+}
