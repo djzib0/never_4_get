@@ -3,18 +3,23 @@ import { revalidatePath } from "next/cache";
 import { Entry, User } from "./models";
 import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 
-export const addEntry = async () => {
-    const title = "Test title"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const addEntry = async (prevState: any, formData: FormData) => {
+    
+    const title = formData.get("title")
+    const userId = formData.get("userId");
 
     try {
         connectToDb();
         const newEntry = new Entry({
-            title
+            title,
+            userId
         })
         await newEntry.save()
         revalidatePath("/test")
+        return {...prevState, success: true}
     } catch (error) {
         return {error: error}
     }
@@ -28,8 +33,6 @@ export const addUser = async () => {
             password: "test123",
             email: "batman@email.com",
             img: "",
-            isAdmin: false,
-
         })
         await newUser.save();
         revalidatePath("/test")
@@ -39,7 +42,7 @@ export const addUser = async () => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const login = async (prevState: any, formData: FormData) => {
+export const handleSignIn = async (prevState: any, formData: FormData) => {
     'use server'
     const username = formData.get("username");
     const password = formData.get("password");
@@ -47,55 +50,72 @@ export const login = async (prevState: any, formData: FormData) => {
     try {
         await signIn("credentials", {username, password})
         revalidatePath("/")
-    } catch (error) {
-        return {error: error}   
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        console.log(error) 
+        if (error.message.includes("credentialssignin")) {
+            return {error: "Wrong username or password!"}
+        } else {
+            return {success: "Logged in!"}
+        }
+        throw error   
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const registerNewUser = async (prevState: any, formData: FormData) => {
+export const handleSingOut = async () => {
     'use server'
+    await signOut();
+}
 
-    const username = formData.get("username");
-    const password = formData.get("password");
-    const passwordRepeat = formData.get("passwordRepeat");
-    const email = formData.get("email");
-    const img = "";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const registerNewUser = async (prevState: any, formData: any) => {
+    // 'use server'
+    const {username, password, email, passwordRepeat, img} = Object.fromEntries(formData)
 
     if (password !== passwordRepeat) {
-        return {error: "Password do not match!"}
+        return {error: "Passwords do not match"}
     }
 
     try {
         connectToDb();
-        const user = await User.findOne({username});
 
+        // check if the user already exists
+        const user = await User.findOne({username})
+
+        // if user exists, return an error
         if (user) {
-            return {error: "User already exists"}
+            console.log("This user already exists, my friend.")
+            return {error: "User already exists."}
         }
 
-        const userEmail = await User.findOne({email});
+        // check if email already exists
+        // if exists, return an error
+        const userEmail = await User.findOne({email})
 
         if (userEmail) {
-            return {error: "Email already exists"}
+            console.log("This email is used, my friend.")
+            return {error: "This email is already registered."}
         }
 
+        // hash password with bcrypt
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password as string, salt)
+        const hashedPassword = await bcrypt.hash(password, salt)
 
+        // if the user or email doesn't exist in the DB,
+        // create a new one and save in DB.
         const newUser = new User({
             username,
-            password: hashedPassword,
             email,
-            img,
+            password: hashedPassword,
+            img
         })
 
         await newUser.save();
-        
-        return {...prevState, success: true}
+        console.log("new user saved to db")
 
-    } catch (error) {
-        console.log(error)
-        return {error: "Something went wrong"}
+        return {...prevState, success: true}
+    } catch (err) {
+        console.log(err)
+        return {...prevState, error: "Something went wrong."}
     }
 }

@@ -9,7 +9,7 @@ const RegisterForm = () => {
     password: "",
     passwordRepeat: "",
     email: "",
-    errors: ""
+    error: "",
   })
 
 

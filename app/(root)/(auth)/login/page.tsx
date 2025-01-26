@@ -9,7 +9,9 @@ const LoginPage = async () => {
   return (
     <>
       <LoginForm />
-      ::{session && session.user?.email}::
+      <p>::{session && session.user?.name}::</p>
+      <p>::{session && session.user?.email}::</p>
+      <p>::{session && session.user?.id}::</p>
     </>
   )
 }
