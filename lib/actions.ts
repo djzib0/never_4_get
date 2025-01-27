@@ -1,6 +1,6 @@
 'use server'
 import { revalidatePath } from "next/cache";
-import { Entry, User } from "./models";
+import { Entry, EntryPosition, User } from "./models";
 import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
@@ -15,14 +15,36 @@ export const addEntry = async (prevState: any, formData: FormData) => {
         connectToDb();
         const newEntry = new Entry({
             title,
-            userId
+            userId,
+            positions: []
         })
         await newEntry.save()
-        revalidatePath("/test")
+        revalidatePath("/entries")
         return {...prevState, success: true}
     } catch (error) {
         return {error: error}
     }
+}
+
+export const addPositionToEntry = async () => {
+    'use server'
+    try {
+        connectToDb();
+        const newPosition = await EntryPosition.create({
+            title: "test y position"
+        })
+        // const filter = {_id: "6797af27edf90b3dfa6f7ae0"};
+        const update = {$push: {positions: newPosition._id}};
+        const entry = await Entry.findByIdAndUpdate(
+            "6797ba57edf90b3dfa6f7af8",
+            update,
+            {new: true}
+        ).populate("positions")
+        console.log('Update entry', entry)
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 export const addUser = async () => {

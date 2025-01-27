@@ -1,5 +1,5 @@
 'use client'
-import { addEntry } from '@/lib/actions'
+import { addEntry, addPositionToEntry } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
 
 const EntryForm = ({userId}: {userId: string}) => {
@@ -43,6 +43,7 @@ const EntryForm = ({userId}: {userId: string}) => {
         <button>Add new entry</button>
         {state?.error && <p>{state.error}</p>}
       </form>
+      <button onClick={addPositionToEntry}>Add new position</button>
     </>
   )
 }
