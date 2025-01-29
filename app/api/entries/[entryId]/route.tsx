@@ -4,12 +4,15 @@ import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const GET = async (request: NextApiRequest) => {
+export const GET = async (request: NextApiRequest, {params} : {params: {entryId: string}}) => {
+
+    const {entryId} = params;
+    console.log(entryId, " entry Id in route")
     try {
         connectToDb();
-        const entries = await Entry.findById("6797ba57edf90b3dfa6f7af8")
+        const entry = await Entry.findById(entryId)
         .populate("positions");
-        return NextResponse.json(entries);
+        return NextResponse.json(entry);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         throw new Error("Failed to fetch entries!")
