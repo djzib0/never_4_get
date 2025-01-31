@@ -1,12 +1,34 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 const Navbar = () => {
+
+  const pathName = usePathname();
+  console.log(pathName)
+
   return (
-    <div>
-      <Link href={"/"}>Home</Link>
-      <Link href={"/entries"}>Entries</Link>
-    </div>
+    <nav className='nav__container'>
+      <div className='nav__logo'>
+        N4G
+      </div>
+      <div className='nav__links lg:hidden'>
+        <Link 
+          href={"/"} 
+          className={pathName === "/" ? 'link__active' :'nav__link'}
+        >
+          Home
+        </Link>
+        <Link 
+          href={"/entries"} 
+          className={pathName.startsWith("/entries") ? 'link__active' :'nav__link'}
+        >
+          Entries
+        </Link>
+      </div>
+    </nav>
   )
 }
 

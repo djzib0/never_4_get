@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+
+  .nav__container {
+    @apply mx-auto size-full flex items-center justify-between bg-slate-800 px-2
+  }
+
+  .nav__logo {
+    @apply flex justify-end gap-4 text-2xl p-4 text-slate-300
+  }
+
+  .nav__links {
+    @apply flex justify-end items-center gap-4 text-2xl
+  }
+
+  .nav__link {
+    @apply  text-slate-300 p-2
+  }
+
+  /* .nav__link:hover {
+    @apply bg-slate-300 text-slate-800 rounded-md
+  } */
+
+  .link__active {
+    @apply bg-red-300
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
