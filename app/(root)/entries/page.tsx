@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import EntryForm from '@/components/entryForm/EntryForm';
 import { EntryType } from '@/lib/types';
-import { SettingsProvider } from '@/lib/useContext';
+import { SettingsProvider } from '@/lib/useSettings';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'

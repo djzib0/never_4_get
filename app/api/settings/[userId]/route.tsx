@@ -10,7 +10,6 @@ export const GET = async (request: NextApiRequest, {params} : {params: Promise<{
     try {
         connectToDb();
         const user = await User.findById(userId).populate("settings")
-        console.log(user.settings, "  <=== user")
         return NextResponse.json(user.settings);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

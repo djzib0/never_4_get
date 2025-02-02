@@ -9,6 +9,10 @@
   }
 
   .nav__container {
+    @apply mx-auto size-full flex items-center justify-between bg-slate-200 p-2
+  }
+
+  .nav__container-dark {
     @apply mx-auto size-full flex items-center justify-between bg-slate-800 p-2
   }
 

@@ -1,15 +1,17 @@
 'use client'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 
-const Navbar =  () => {
+const Navbar = () => {
 
+  // utilize pathname for active links
   const pathName = usePathname();
 
+
+
   return (
-    <nav className='nav__container'>
+    <nav className={`nav__container-dark`}>
       <div className='nav__logo'>
         N4G
       </div>
