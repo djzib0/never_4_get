@@ -3,7 +3,7 @@ import React from 'react'
 
 const RegisterPage = async () => {
   return (
-    <div>
+    <div className='content__container'>
       <RegisterForm />
     </div>
   )

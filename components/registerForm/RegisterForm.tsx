@@ -30,9 +30,9 @@ const RegisterForm = () => {
 
   return (
     <>
-      <form action={formAction}>
+      <form action={formAction} className='form__container'>
 
-        <label htmlFor='username'>username</label>
+        <label htmlFor='username' className='label'>username</label>
         <input
           type='text'
           id='username'
@@ -40,7 +40,7 @@ const RegisterForm = () => {
           required
         />
 
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password' className='label'>Password</label>
         <input
           type='password'
           id='password'
@@ -48,7 +48,7 @@ const RegisterForm = () => {
           required
         />
 
-        <label htmlFor='passwordRepeat'>Password repeat</label>
+        <label htmlFor='passwordRepeat' className='label'>Password repeat</label>
         <input
           type='password'
           id='passwordRepeat'
@@ -56,7 +56,8 @@ const RegisterForm = () => {
           required
         />
         {state?.error && <p>{state?.error}</p>}
-        <label htmlFor='email'>Email</label>
+
+        <label htmlFor='email' className='label'>Email</label>
         <input
           type='email'
           id='email'

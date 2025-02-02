@@ -13,3 +13,8 @@ export type EntryPositionType = {
     title: string;
     isFinished: boolean;
 }
+
+export type UserSettingsType = {
+    _id: string;
+    isDarkModeOn: boolean;
+}

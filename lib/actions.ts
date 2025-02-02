@@ -1,6 +1,6 @@
 'use server'
 import { revalidatePath } from "next/cache";
-import { Entry, EntryPosition, User } from "./models";
+import { Entry, EntryPosition, User, UserSettings } from "./models";
 import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
@@ -122,14 +122,17 @@ export const registerNewUser = async (prevState: any, formData: any) => {
         // hash password with bcrypt
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
-
         // if the user or email doesn't exist in the DB,
         // create a new one and save in DB.
+
+        const settings = await UserSettings.create({});
+
         const newUser = new User({
             username,
             email,
             password: hashedPassword,
-            img
+            img,
+            settings: settings._id
         })
 
         await newUser.save();

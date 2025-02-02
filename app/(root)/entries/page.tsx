@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import EntryForm from '@/components/entryForm/EntryForm';
 import { EntryType } from '@/lib/types';
+import { SettingsProvider } from '@/lib/useContext';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
@@ -38,12 +39,14 @@ const EntriesPage = async () => {
   }
 
   return (
-    <>
-      <EntryForm userId={session.user.id}/> 
+    <div className='content__container'>
+      <SettingsProvider userId={session.user.id}>
+        <EntryForm userId={session.user.id}/> 
+      </SettingsProvider>
       <div className='flex flex-col gap-2 my-2 bg-slate-400 w-fit p-4'>
         {entriesLinksArr}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import React from 'react'
 
 const LoginPage = async () => {
 
-  const session = await auth()
+  const session = await auth();
 
   return (
     <>

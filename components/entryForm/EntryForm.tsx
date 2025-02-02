@@ -1,10 +1,12 @@
 'use client'
 import { addEntry, addPositionToEntry } from '@/lib/actions'
+import { useSettings } from '@/lib/useContext'
 import React, { useActionState, useState } from 'react'
 
 const EntryForm = ({userId}: {userId: string}) => {
 
   const [state, formAction] = useActionState(addEntry, null)
+  const {settings} = useSettings();
 
   // handling hidden data which will not be provided by user
     const [hiddenFormData, setHiddenFormData] = useState({
