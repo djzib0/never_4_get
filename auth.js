@@ -26,7 +26,6 @@ const login = async (credentials) => {
       throw new Error("Wrong password.")
     }
 
-    // if everything is OK
     return user
   
   } catch (error) {
@@ -50,6 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       async authorize(credentials) {
         try {
           const user = await login(credentials)
+
           return user;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
@@ -61,9 +61,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async signIn({user, account, profile})  {
-      console.log(user, " user")
-      console.log(account, " account")
-      console.log(profile, " profile")
       if (account?.provider === 'github') {
         connectToDb();
         try {

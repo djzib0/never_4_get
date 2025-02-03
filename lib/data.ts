@@ -11,7 +11,7 @@ export const getEntries = async () => {
     }
 }
 
-export const getSettingsData = async (userId: string) => {
+export const getSettingsData = async (userId: string | undefined) => {
     // fetch entry data by entry id
     const res = await fetch(`http://localhost:3000/api/settings/${userId}`)
   
@@ -20,4 +20,8 @@ export const getSettingsData = async (userId: string) => {
     }
   
     return res.json();
+  }
+
+  export const defaultSettings = {
+    isDarkModeOn: false,
   }
