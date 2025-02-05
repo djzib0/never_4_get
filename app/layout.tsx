@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { auth } from "@/auth";
 import { SettingsProvider } from "@/lib/useSettings";
+import { defaultSettings, getSettingsData } from "@/lib/data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +28,18 @@ export default async function RootLayout({
 }>) {
 
   const session = await auth();
+  let settings = defaultSettings;
+
+  if (session) {
+    settings = await getSettingsData(session.user?.id) || defaultSettings;
+  }
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SettingsProvider userId={session && session.user?.id}>
+        <SettingsProvider settings={settings}>
           <Navbar />
         {children}
         </SettingsProvider>

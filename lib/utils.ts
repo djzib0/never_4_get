@@ -41,3 +41,15 @@ export const loadFromLocalStorage = (key: string) => {
         throw new Error("Couldn't load data from local storage", error)
     }
 }
+
+export const getEntryData = async (entryId: string) => {
+  
+    // fetch entry data by entry id
+    const res = await fetch(`http://localhost:3000/api/entries/${entryId}`)
+  
+    if (!res.ok) {
+      throw new Error("Couldn't not fetch entry data.")
+    }
+  
+    return res.json();
+  }

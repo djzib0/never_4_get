@@ -1,17 +1,9 @@
+import EntryCommentForm from '@/components/entryCommentForm/EntryCommentForm';
 import EntryPosition from '@/components/entryPosition/EntryPosition';
+import EntryPositionForm from '@/components/entryPositionForm/EntryPositionForm';
 import { EntryPositionType } from '@/lib/types';
+import { getEntryData } from '@/lib/utils';
 import React from 'react';
-
-const getEntryData = async (entryId: string) => {
-  // fetch entry data by entry id
-  const res = await fetch(`http://localhost:3000/api/entries/${entryId}`)
-
-  if (!res.ok) {
-    throw new Error("Couldn't not fetch entry data.")
-  }
-
-  return res.json();
-}
 
 const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
 
@@ -26,6 +18,8 @@ const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
 
   return (
     <div>
+      <EntryPositionForm entryId={entryId}/>
+      <EntryCommentForm entryId={entryId} />
       {entryPositionsArr}
     </div>
   )

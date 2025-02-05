@@ -4,6 +4,7 @@ export type EntryType = {
     userId: string;
     isFavourite: boolean;
     positions: EntryPositionType[];
+    comments: EntryCommentType[];
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -11,10 +12,13 @@ export type EntryType = {
 export type EntryPositionType = {
     _id: string;
     title: string;
-    isFinished: boolean;
+    isActive: boolean;
 }
 
 export type UserSettingsType = {
-    _id: string;
     isDarkModeOn: boolean;
+}
+
+export type EntryCommentType = {
+    comment: string;
 }

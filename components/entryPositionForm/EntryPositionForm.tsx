@@ -1,16 +1,15 @@
 'use client'
-import { addEntry } from '@/lib/actions'
+import { addEntryPosition } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
 
-const EntryForm = ({userId}: {userId: string}) => {
+const EntryPositionForm = ({entryId} : {entryId: string}) => {
 
-  const [state, formAction] = useActionState(addEntry, null)
-
+  const [state, formAction] = useActionState(addEntryPosition, null)
 
   // handling hidden data which will not be provided by user
-  const [hiddenFormData, setHiddenFormData] = useState({
-    userId
-  })
+    const [hiddenFormData, setHiddenFormData] = useState({
+      entryId
+    })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const {name, value, type} = e.target
@@ -35,18 +34,17 @@ const EntryForm = ({userId}: {userId: string}) => {
 
         <input
           type='text'
-          name='userId'
-          value={hiddenFormData.userId}
+          name='entryId'
+          value={hiddenFormData.entryId}
           onChange={handleChange}
           hidden
         />
 
-        <button>Add new entry</button>
+        <button>Add new position</button>
         {state?.error && <p>{state.error}</p>}
       </form>
-      <button type='submit'>Add new position</button>
     </>
   )
 }
 
-export default EntryForm
+export default EntryPositionForm

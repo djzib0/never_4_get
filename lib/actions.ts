@@ -4,6 +4,7 @@ import { Entry, EntryPosition, User, UserSettings } from "./models";
 import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
+import { redirect } from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntry = async (prevState: any, formData: FormData) => {
@@ -26,38 +27,41 @@ export const addEntry = async (prevState: any, formData: FormData) => {
     }
 }
 
-export const addPositionToEntry = async () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const addEntryPosition = async (prevState: any, formData: FormData) => {
     'use server'
+
+    const {title, entryId} = Object.fromEntries(formData)
+
     try {
         connectToDb();
         const newPosition = await EntryPosition.create({
-            title: "test y position"
+            title
         })
-        // const filter = {_id: "6797af27edf90b3dfa6f7ae0"};
         const update = {$push: {positions: newPosition._id}};
         const entry = await Entry.findByIdAndUpdate(
-            "6797ba57edf90b3dfa6f7af8",
+            entryId,
             update,
             {new: true}
         ).populate("positions")
         console.log('Update entry', entry)
+        revalidatePath("/entries")
+        return {...prevState, success: true}
     } catch (error) {
         console.log(error)
+        return {error: error}
     }
-
 }
 
-export const addUser = async () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const addEntryComment = async (prevState: any, formData: FormData) => {
+    'use server'
+
+    const {comment, entryId} = Object.fromEntries(formData)
+
     try {
-        connectToDb();
-        const newUser = new User({
-            username: "batman",
-            password: "test123",
-            email: "batman@email.com",
-            img: "",
-        })
-        await newUser.save();
-        revalidatePath("/test")
+        console.log(comment, entryId, "adding comment to the entry moin.")
+        return {...prevState}
     } catch (error) {
         return {error: error}
     }
@@ -66,8 +70,8 @@ export const addUser = async () => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const handleSignIn = async (prevState: any, formData: FormData) => {
     'use server'
-    const username = formData.get("username");
-    const password = formData.get("password");
+
+    const { username, password } = Object.fromEntries(formData);
 
     try {
         await signIn("credentials", {username, password})
@@ -78,13 +82,14 @@ export const handleSignIn = async (prevState: any, formData: FormData) => {
         if (error.message.includes("credentialssignin")) {
             return {error: "Wrong username or password!"}
         } else {
+            redirect("/")
             return {success: "Logged in!"}
         }
         throw error   
     }
 }
 
-export const handleSingOut = async () => {
+export const handleSignOut = async () => {
     'use server'
     await signOut();
 }

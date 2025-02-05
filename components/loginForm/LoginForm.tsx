@@ -1,5 +1,5 @@
 'use client'
-import { handleSignIn, handleSingOut } from '@/lib/actions'
+import { handleSignIn, handleSignOut } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
 
 const LoginForm = () => {
@@ -33,7 +33,7 @@ const LoginForm = () => {
       <button type='button' onClick={toggleHidePassword}>{isPasswordHidden ? "Show password" : "Hide password"}</button>
       <button type='submit'>Login</button>
       </form>
-      <button onClick={handleSingOut}>Logout</button>
+      <button onClick={handleSignOut}>Logout</button>
     </>
   )
 }

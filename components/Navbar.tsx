@@ -9,20 +9,13 @@ const Navbar = () => {
   // utilize pathname for active links
   const pathName = usePathname();
 
+  // utilize user settings
   const {settings} = useSettings();
-
-  if (!settings) {
-    return <p>Loading...</p>
-  }
-
-
-  console.log(settings.isDarkModeOn, "theme")
-  const theme = settings.isDarkModeOn === true ? "-dark" : "";
-  console.log(theme, "theme")
-  
+  const theme = settings.isDarkModeOn === false ? "" : "-dark"
 
   return (
     <nav className={`nav__container${theme}`}>
+    {/* <nav className={`nav__container-dark`}> */}
       <div className='nav__logo'>
         N4G
       </div>

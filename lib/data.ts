@@ -1,3 +1,4 @@
+import { UserSettingsType } from "./types";
 import { connectToDb } from "./utils"
 
 
@@ -22,6 +23,6 @@ export const getSettingsData = async (userId: string | undefined) => {
     return res.json();
   }
 
-  export const defaultSettings = {
+  export const defaultSettings: UserSettingsType = {
     isDarkModeOn: false,
   }
