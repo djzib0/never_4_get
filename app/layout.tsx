@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar/Navbar";
 import { auth } from "@/auth";
 import { SettingsProvider } from "@/lib/useSettings";
 import { defaultSettings, getSettingsData } from "@/lib/data";
+import NavbarBottom from "@/components/navbarBottom/NavbarBottom";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,8 @@ export default async function RootLayout({
       >
         <SettingsProvider settings={settings}>
           <Navbar />
-        {children}
+          {children}
+          <NavbarBottom />
         </SettingsProvider>
       </body>
     </html>

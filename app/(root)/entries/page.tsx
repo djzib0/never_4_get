@@ -1,25 +1,16 @@
 import { auth } from '@/auth';
 import EntryForm from '@/components/entryForm/EntryForm';
 import { EntryType } from '@/lib/types';
+import { getEntriesData } from '@/lib/utils';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
-
-const getEntry = async () => {
-  const res = await fetch('http://localhost:3000/api/entries')
-
-  if (!res.ok) {
-    throw new Error("Something went wrong")
-  }
-
-  return res.json();
-}
 
 const EntriesPage = async () => {
 
   const session = await auth();
 
-  const entries = await getEntry();
+  const entries = await getEntriesData();
 
   // map through entries to display links to entry details
   const entriesLinksArr = entries.map((entry: EntryType) => {
@@ -29,6 +20,7 @@ const EntriesPage = async () => {
         key={entry._id}
       >
         {entry.title}
+        {entry.comments.length}
       </Link>
     )
   })

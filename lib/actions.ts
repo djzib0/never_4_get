@@ -1,6 +1,6 @@
 'use server'
 import { revalidatePath } from "next/cache";
-import { Entry, EntryPosition, User, UserSettings } from "./models";
+import { Entry, EntryComment, EntryPosition, User, UserSettings } from "./models";
 import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
@@ -17,7 +17,8 @@ export const addEntry = async (prevState: any, formData: FormData) => {
         const newEntry = new Entry({
             title,
             userId,
-            positions: []
+            positions: [],
+            comments: [],
         })
         await newEntry.save()
         revalidatePath("/entries")
@@ -38,17 +39,20 @@ export const addEntryPosition = async (prevState: any, formData: FormData) => {
         const newPosition = await EntryPosition.create({
             title
         })
+        
         const update = {$push: {positions: newPosition._id}};
-        const entry = await Entry.findByIdAndUpdate(
+
+        await Entry.findByIdAndUpdate(
             entryId,
             update,
             {new: true}
         ).populate("positions")
-        console.log('Update entry', entry)
+
         revalidatePath("/entries")
+
         return {...prevState, success: true}
+
     } catch (error) {
-        console.log(error)
         return {error: error}
     }
 }
@@ -60,8 +64,18 @@ export const addEntryComment = async (prevState: any, formData: FormData) => {
     const {comment, entryId} = Object.fromEntries(formData)
 
     try {
-        console.log(comment, entryId, "adding comment to the entry moin.")
-        return {...prevState}
+        connectToDb();
+        const newComment = await EntryComment.create({
+            comment
+        })
+        const update = {$push: {comments: newComment._id}};
+
+        await Entry.findByIdAndUpdate(entryId, update, {new: true})
+        .populate("comments")
+
+        revalidatePath("/entries")
+        return {...prevState, success: true}
+
     } catch (error) {
         return {error: error}
     }
@@ -137,7 +151,7 @@ export const registerNewUser = async (prevState: any, formData: any) => {
             email,
             password: hashedPassword,
             img,
-            settings: settings._id
+            settings: settings._id,
         })
 
         await newUser.save();

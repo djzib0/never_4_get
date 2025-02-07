@@ -101,7 +101,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (account?.provider === 'google') {
         connectToDb();
         try {
-          console.log(profile, " profile moin")
           const user = await User.findOne({email: profile?.email});
           if (!user) {
             const newUser = new User({

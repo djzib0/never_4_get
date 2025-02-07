@@ -10,7 +10,7 @@ const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
   const {entryId} = await params;
   const entryData = await getEntryData(entryId);
 
-  const entryPositionsArr = entryData.positions.map((position: EntryPositionType) => {
+  const entryPositionsArr = entryData && entryData.positions.map((position: EntryPositionType) => {
     return (
       <EntryPosition key={position._id} entryPosition={position} />
     )

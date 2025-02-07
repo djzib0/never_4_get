@@ -53,3 +53,14 @@ export const getEntryData = async (entryId: string) => {
   
     return res.json();
   }
+
+  
+  export const getEntriesData = async () => {
+    const res = await fetch('http://localhost:3000/api/entries')
+  
+    if (!res.ok) {
+      throw new Error("Something went wrong")
+    }
+  
+    return res.json();
+  }

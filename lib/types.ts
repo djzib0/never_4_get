@@ -13,6 +13,7 @@ export type EntryPositionType = {
     _id: string;
     title: string;
     isActive: boolean;
+    note: string;
 }
 
 export type UserSettingsType = {
@@ -21,4 +22,6 @@ export type UserSettingsType = {
 
 export type EntryCommentType = {
     comment: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
