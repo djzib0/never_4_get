@@ -1,13 +1,19 @@
 'use client'
 import { useSettings } from '@/lib/useSettings';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import { useState } from 'react';
+import { PiUserCircle } from 'react-icons/pi';
 
 
-const Navbar = () => {
+const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
 
-  // utilize pathname for active links
-  const pathName = usePathname();
+  // state variables
+  const [isUserMenuOn, setIsUserMenuOn] = useState(false);
+
+  // toggle user menu
+  const toggleUserMenu = () => {
+    setIsUserMenuOn(prevState => !prevState)
+  }
 
   // utilize user settings
   const {settings} = useSettings();
@@ -20,18 +26,20 @@ const Navbar = () => {
         N4G
       </div>
       <div className='nav__links'>
-        <Link 
-          href={"/"} 
-          className={pathName === "/" ? 'link__active' :'nav__link'}
+        <button
+          onClick={toggleUserMenu}
+          className={`avatar__btn`}
         >
-          Home
-        </Link>
-        <Link 
-          href={"/entries"} 
-          className={pathName.startsWith("/entries") ? 'link__active' :'nav__link'}
-        >
-          Entries
-        </Link>
+          {imgUrl ? 
+          <Image 
+          src={imgUrl} 
+          height={50} 
+          width={50} 
+          alt='user avatar'
+          className='avatar__img'
+        />
+          : <PiUserCircle />}
+        </button>
       </div>
     </nav>
   )

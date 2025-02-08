@@ -41,7 +41,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SettingsProvider settings={settings}>
-          <Navbar />
+          <Navbar imgUrl={"https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"}/>
           {children}
           <NavbarBottom />
         </SettingsProvider>

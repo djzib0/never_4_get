@@ -9,11 +9,11 @@
   }
 
   .nav__container {
-    @apply mx-auto size-full flex items-center justify-between bg-slate-200 p-2
+    @apply mx-auto w-full flex items-center justify-between bg-lime-100 p-2
   }
 
   .nav__container-dark {
-    @apply mx-auto size-full flex items-center justify-between bg-slate-800 p-2
+    @apply mx-auto w-full flex items-center justify-between bg-slate-800 p-2
   }
 
   .nav__logo {
@@ -21,15 +21,28 @@
   }
 
   .nav__links {
-    @apply flex justify-end items-center gap-4 text-sm
+    @apply flex justify-end items-center gap-4 
   }
 
-  .nav__link {
-    @apply  text-slate-300 p-2
+  .nav__icon {
+    @apply p-2 text-2xl
   }
 
+  .nav__icon--center {
+    @apply !text-5xl !p-2 absolute left-1/2 transform -translate-x-1/2 bottom-3
+    rounded-full
+  }
+  
   .link__active {
-    @apply bg-slate-300 text-slate-800 rounded-md p-2
+    @apply bg-yellow-300 text-slate-800 p-2 rounded-full
+  }
+
+  .avatar__btn {
+    @apply text-5xl mr-2
+  }
+
+  .avatar__img {
+    @apply rounded-full
   }
 
   .form__container {
