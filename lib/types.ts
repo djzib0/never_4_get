@@ -17,7 +17,9 @@ export type EntryPositionType = {
 }
 
 export type UserSettingsType = {
+    _id: string,
     isDarkModeOn: boolean;
+    __v?: number
 }
 
 export type EntryCommentType = {

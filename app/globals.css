@@ -9,11 +9,11 @@
   }
 
   .nav__container {
-    @apply mx-auto w-full flex items-center justify-between bg-lime-100 p-2
+    @apply mx-auto w-full flex items-center justify-between bg-lime-100 dark:bg-red-900 p-1
   }
 
   .nav__container-dark {
-    @apply mx-auto w-full flex items-center justify-between bg-slate-800 p-2
+    @apply mx-auto w-full flex items-center justify-between bg-slate-800 p-1
   }
 
   .nav__logo {

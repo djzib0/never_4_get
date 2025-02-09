@@ -1,8 +1,9 @@
 'use client'
-import { useSettings } from '@/lib/useSettings';
+import { useSettings } from '@/lib/utilComponents/useSettings';
 import Image from 'next/image';
 import { useState } from 'react';
 import { PiUserCircle } from 'react-icons/pi';
+import ThemeSwitcher from '../themeSwitcher/ThemeSwitcher';
 
 
 const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
@@ -17,14 +18,14 @@ const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
 
   // utilize user settings
   const {settings} = useSettings();
-  const theme = settings.isDarkModeOn === false ? "" : "-dark"
 
   return (
-    <nav className={`nav__container${theme}`}>
+    <nav className={`nav__container `}>
     {/* <nav className={`nav__container-dark`}> */}
       <div className='nav__logo'>
         N4G
       </div>
+      <ThemeSwitcher />
       <div className='nav__links'>
         <button
           onClick={toggleUserMenu}
@@ -33,8 +34,8 @@ const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
           {imgUrl ? 
           <Image 
           src={imgUrl} 
-          height={50} 
-          width={50} 
+          height={40} 
+          width={40} 
           alt='user avatar'
           className='avatar__img'
         />

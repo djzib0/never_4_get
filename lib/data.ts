@@ -24,5 +24,6 @@ export const getSettingsData = async (userId: string | undefined) => {
   }
 
   export const defaultSettings: UserSettingsType = {
+    _id: "defaultSettingsId",
     isDarkModeOn: false,
   }

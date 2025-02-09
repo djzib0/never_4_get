@@ -16,3 +16,4 @@ export const GET = async (request: NextApiRequest, {params} : {params: Promise<{
         throw new Error("Failed to fetch entries!")
     }
 }
+

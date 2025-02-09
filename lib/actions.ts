@@ -5,6 +5,7 @@ import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
 import { redirect } from "next/navigation";
+import { UserSettingsType } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntry = async (prevState: any, formData: FormData) => {
@@ -162,4 +163,16 @@ export const registerNewUser = async (prevState: any, formData: any) => {
         console.log(err)
         return {...prevState, error: "Something went wrong."}
     }
+}
+
+export const updateSettings = async (settings: UserSettingsType) => {
+    const settingsId = settings._id
+
+    const response = await fetch(`http://localhost:3000/api/settings/${settingsId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ themePreference: "dark" }), // Example field to update
+      });
 }

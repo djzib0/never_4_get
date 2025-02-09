@@ -3,9 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { auth } from "@/auth";
-import { SettingsProvider } from "@/lib/useSettings";
+import { SettingsProvider } from "@/lib/utilComponents/useSettings";
 import { defaultSettings, getSettingsData } from "@/lib/data";
 import NavbarBottom from "@/components/navbarBottom/NavbarBottom";
+import ThemeProvider from "@/lib/utilComponents/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,9 +42,11 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SettingsProvider settings={settings}>
-          <Navbar imgUrl={"https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"}/>
-          {children}
-          <NavbarBottom />
+          <ThemeProvider>
+            <Navbar imgUrl={"https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"}/>
+            {children}
+            <NavbarBottom />
+          </ThemeProvider>
         </SettingsProvider>
       </body>
     </html>
