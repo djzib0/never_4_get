@@ -166,13 +166,21 @@ export const registerNewUser = async (prevState: any, formData: any) => {
 }
 
 export const updateSettings = async (settings: UserSettingsType) => {
+    'use client'
     const settingsId = settings._id
 
-    const response = await fetch(`http://localhost:3000/api/settings/${settingsId}`, {
+    const response = await fetch(`http://localhost:3000/api/settings/edit/${settingsId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ themePreference: "dark" }), // Example field to update
+        body: JSON.stringify(
+            { 
+                ...settings,
+                isDarkModeOn: settings.isDarkModeOn
+            }
+        ), // Field to update
       });
+
+      return response.json()
 }

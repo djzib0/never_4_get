@@ -16,9 +16,6 @@ const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
     setIsUserMenuOn(prevState => !prevState)
   }
 
-  // utilize user settings
-  const {settings} = useSettings();
-
   return (
     <nav className={`nav__container `}>
     {/* <nav className={`nav__container-dark`}> */}

@@ -11,7 +11,6 @@ const ThemeProvider = ({children}: {children: ReactNode}) => {
   
   useEffect(() => {
     const fetchTheme = async () => {
-      console.log(settings.isDarkModeOn === false ? "light" : "dark", " will aply this")
       setTheme(settings.isDarkModeOn === false ? "light" : "dark")
       setLoaded(true);
     };
@@ -20,8 +19,6 @@ const ThemeProvider = ({children}: {children: ReactNode}) => {
   }, [theme, settings.isDarkModeOn])
   
   if (!loaded) return null; // Prevents hydration mismatch
-
-  console.log(theme, " before returning")
 
   return (
     <NextThemesProvider attribute="class" defaultTheme={theme}>{children}</NextThemesProvider>
