@@ -4,9 +4,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { PiUserCircle } from 'react-icons/pi';
 import ThemeSwitcher from '../themeSwitcher/ThemeSwitcher';
+import { handleSignOut } from '@/lib/actions';
 
 
-const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
+const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username: string}) => {
 
   // state variables
   const [isUserMenuOn, setIsUserMenuOn] = useState(false);
@@ -23,6 +24,8 @@ const Navbar = ({imgUrl}: {imgUrl: string | undefined | null}) => {
         N4G
       </div>
       <ThemeSwitcher />
+      {username && <button onClick={() => handleSignOut()}>Logout</button>}
+      <p>{username}</p>
       <div className='nav__links'>
         <button
           onClick={toggleUserMenu}

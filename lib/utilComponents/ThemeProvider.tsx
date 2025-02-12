@@ -1,22 +1,26 @@
 'use client'
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ReactNode, useEffect, useState } from "react";
-import { useSettings } from "./useSettings";
+import { getSettingsData } from "../data";
 
-const ThemeProvider = ({children}: {children: ReactNode}) => {
+const ThemeProvider = ({children, userId}: {children: ReactNode, userId: string}) => {
 
+  
   const [theme, setTheme] = useState<string | undefined>();
   const [loaded, setLoaded] = useState(false);
-  const { settings } = useSettings();
+
+  // const [defaultTheme, setDefaultTheme] = useState<string>();
+  console.log(theme, "in Theme Provider")
+  console.log(userId, "in Theme Provider")
   
   useEffect(() => {
     const fetchTheme = async () => {
-      setTheme(settings.isDarkModeOn === false ? "light" : "dark")
+      const settings = await getSettingsData(userId)
+      setTheme(settings.isDarkModeOn ? "dark" : "light")
       setLoaded(true);
     };
-    
     fetchTheme();
-  }, [theme, settings.isDarkModeOn])
+  }, [userId, setTheme])
   
   if (!loaded) return null; // Prevents hydration mismatch
 
