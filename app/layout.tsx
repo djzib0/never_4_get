@@ -6,7 +6,6 @@ import { auth } from "@/auth";
 import { SettingsProvider } from "@/lib/utilComponents/useSettings";
 import { defaultSettings, getSettingsData } from "@/lib/data";
 import NavbarBottom from "@/components/navbarBottom/NavbarBottom";
-import ThemeProvider from "@/lib/utilComponents/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,15 +40,13 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SettingsProvider settings={settings}>
-          <ThemeProvider userId={session?.user.id}>
+        <SettingsProvider settings={settings} userId={session?.user?.id}>
             <Navbar
               imgUrl={"https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"}
               username={session?.user?.name || " no user"}
             />
             {children}
             <NavbarBottom />
-          </ThemeProvider>
         </SettingsProvider>
       </body>
     </html>

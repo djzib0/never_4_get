@@ -169,6 +169,8 @@ export const updateSettings = async (settings: UserSettingsType) => {
     'use client'
     const settingsId = settings._id
 
+    console.log(settings, "updating settings")
+
     const response = await fetch(`http://localhost:3000/api/settings/edit/${settingsId}`, {
         method: "PUT",
         headers: {
@@ -177,7 +179,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
         body: JSON.stringify(
             { 
                 ...settings,
-                isDarkModeOn: settings.isDarkModeOn
+                // isDarkModeOn: settings.isDarkModeOn
             }
         ), // Field to update
       });
