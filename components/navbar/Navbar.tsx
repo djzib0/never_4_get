@@ -1,38 +1,36 @@
 'use client'
-import { useSettings } from '@/lib/utilComponents/useSettings';
+import { useSettings } from '@/lib/utilComponents/SettingsContext';
 import Image from 'next/image';
-import { useState } from 'react';
 import { PiUserCircle } from 'react-icons/pi';
 import { handleSignOut } from '@/lib/actions';
-import Switcher from '../switcher/Switcher';
-
+import UserMenu from '../userMenu/UserMenu';
+import useUserMenu from '@/lib/utilComponents/useUserMenu';
 
 const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username: string}) => {
 
-  // state variables
-  const [isUserMenuOn, setIsUserMenuOn] = useState(false);
+  // utilize custom hook
+  const {isMenuOn, toggleUserMenu} = useUserMenu()
 
   // utilize context
-  const {settings, changeTheme} = useSettings();
+  const { changeTheme} = useSettings();
 
   // toggle user menu
-  const toggleUserMenu = () => {
-    setIsUserMenuOn(prevState => !prevState)
-  }
+  // const toggleUserMenu = () => {
+  //   setIsUserMenuOn(prevState => !prevState)
+  // }
 
   return (
-    <nav className={`nav__container `}>
+    <nav className={`nav__container`}>
     {/* <nav className={`nav__container-dark`}> */}
       <div className='nav__logo'>
         N4G
       </div>
-      <button onClick={changeTheme}>Change theme in context</button>
-      <Switcher />
+      <button onClick={changeTheme}>Change theme</button>
       {username && <button onClick={() => handleSignOut()}>Logout</button>}
       <p>{username}</p>
       <div className='nav__links'>
         <button
-          onClick={toggleUserMenu}
+          onClick={() => toggleUserMenu()}
           className={`avatar__btn`}
         >
           {imgUrl ? 
@@ -46,6 +44,7 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
           : <PiUserCircle />}
         </button>
       </div>
+      <UserMenu isMenuOn={isMenuOn} />
     </nav>
   )
 }

@@ -1,3 +1,6 @@
+import { ReactElement } from "react";
+import { IconType } from "react-icons";
+
 export type EntryType = {
     _id: string;
     title: string;
@@ -27,3 +30,10 @@ export type EntryCommentType = {
     createdAt?: Date;
     updatedAt?: Date;
 }
+
+export type UserMenuPositionType = {
+    icon: IconType | ReactElement,
+    title: string,
+    path?: string,
+    func?: () => void;
+  }

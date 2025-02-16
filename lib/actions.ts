@@ -106,7 +106,18 @@ export const handleSignIn = async (prevState: any, formData: FormData) => {
 
 export const handleSignOut = async () => {
     'use server'
-    await signOut();
+    try {
+        await signOut();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        console.log(error)
+        if (error.message.includes("NEXT_REDIRECT")) {
+            console.log("there is an next_redirect error")
+            redirect("/login")
+        }
+        return {error: "An error during logout has occured"}
+    }
+
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

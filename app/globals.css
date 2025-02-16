@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer utilities {
 
   .content__container {
-    @apply mx-auto max-w-sm p-4 bg-slate-300
+    @apply mx-auto max-w-sm p-4 bg-slate-300 dark:bg-[#181C14] dark:text-[#ECDFCC]
   }
 
   .nav__container {
-    @apply mx-auto w-full flex items-center justify-between bg-lime-100 dark:bg-red-900 p-1
+    @apply mx-auto w-full flex items-center justify-between bg-lime-100 dark:bg-[#3F4F44] dark:text-[#DCD7C9] px-1 z-20 h-14
   }
 
   .nav__container-dark {
@@ -53,6 +54,10 @@
     @apply uppercase text-sm
   }
 }
+  .user__menu {
+    @apply bg-slate-400 dark:bg-[#3C3D37] dark:text-slate-50 absolute top-14 right-0 flex flex-col z-10 p-2
+  }
+
 
 :root {
   --background: #ffffff;

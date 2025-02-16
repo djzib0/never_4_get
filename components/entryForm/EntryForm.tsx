@@ -6,7 +6,6 @@ const EntryForm = ({userId}: {userId: string}) => {
 
   const [state, formAction] = useActionState(addEntry, null)
 
-
   // handling hidden data which will not be provided by user
   const [hiddenFormData, setHiddenFormData] = useState({
     userId
