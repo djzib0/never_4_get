@@ -1,18 +1,12 @@
-import { auth } from '@/auth'
 import LoginForm from '@/components/loginForm/LoginForm'
 import React from 'react'
 
 const LoginPage = async () => {
 
-  const session = await auth();
-
   return (
-    <>
+    <div className='p-4 bg-[#3C3D37] h-screen' >
       <LoginForm />
-      <p>::{session && session.user?.name}::</p>
-      <p>::{session && session.user?.email}::</p>
-      <p>::{session && session.user?.id}::</p>
-    </>
+    </div>
   )
 }
 

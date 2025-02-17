@@ -4,7 +4,6 @@ import UserMenuPosition from './userMenuPosition/UserMenuPosition';
 import { FaUserGear } from "react-icons/fa6";
 import { AiOutlinePoweroff } from "react-icons/ai";
 
-
 const UserMenu = ({isMenuOn}: {isMenuOn: boolean}) => {
 
   return (

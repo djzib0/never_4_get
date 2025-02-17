@@ -15,7 +15,7 @@ const NavbarBottom = () => {
   
 
   return (
-    <nav className={`nav__container !bg-lime-100 fixed bottom-0`}>
+    <nav className={`nav__container bg-[#A4B465] text-[#FEFAE0] dark:bg-[#181C14] dark:text-[#DCD7C9] fixed bottom-0`}>
       <Link 
         href={"/"} 
         className={`nav__icon ${pathName === "/" ? 'link__active': ''}`}
@@ -32,7 +32,7 @@ const NavbarBottom = () => {
 
       <Link 
         href={"/add"} 
-        className={`nav__icon nav__icon--center !bg-lime-100 ${pathName === "/add" ? 'link__active': ''}`}
+        className={`nav__icon nav__icon--center bg-[#A4B465] text-[#FEFAE0] dark:bg-[#181C14] dark:text-[#DCD7C9] ${pathName === "/add" ? 'link__active': ''}`}
       >
         <CiCirclePlus />
       </Link>

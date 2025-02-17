@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { auth } from "@/auth";
@@ -7,15 +7,15 @@ import { SettingsProvider } from "@/lib/utilComponents/SettingsContext";
 import { defaultSettings, getSettingsData } from "@/lib/data";
 import NavbarBottom from "@/components/navbarBottom/NavbarBottom";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -50,7 +50,7 @@ export default async function RootLayout({
         <SettingsProvider settings={settings} userId={session?.user?.id}>
             <Navbar
               imgUrl={"https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"}
-              username={session?.user?.name || " no user"}
+              username={session?.user?.name || ""}
             />
             {children}
             <NavbarBottom />

@@ -1,6 +1,7 @@
 'use client'
-import { handleSignIn, handleSignOut } from '@/lib/actions'
+import { handleSignIn } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 
 const LoginForm = () => {
 
@@ -15,25 +16,50 @@ const LoginForm = () => {
 
   return (
     <>
-      <form action={formAction}>
+      <form 
+      action={formAction}
+      className='flex flex-col dark:bg-[#697565] w-full p-4 rounded-md'
+      >
 
-        <label htmlFor='username'>Login</label>
+        <label 
+          htmlFor='username'
+          className='text-[#ECDFCC]'
+          >
+          Login
+        </label>
         <input
             type='text'
             name='username'
             required
-          />
+            />
 
-        <label htmlFor='password'>Password</label>
+        <label 
+          htmlFor='password'
+          className='text-[#ECDFCC]'
+        >
+          Password
+        </label>
         <input
             type={isPasswordHidden ? "password" : ""}
             name='password'
             required
-          />
-      <button type='button' onClick={toggleHidePassword}>{isPasswordHidden ? "Show password" : "Hide password"}</button>
-      <button type='submit'>Login</button>
+        />
+        <div className='flex flex-row justify-between items-center mt-4'>
+          <button 
+            type='submit' 
+            className='w-4/5 py-2 dark:bg-[#ECDFCC] rounded-md font-bold uppercase tracking-widest'
+          >
+            Login
+          </button>
+          <button 
+            type='button' 
+            onClick={toggleHidePassword}
+            className='text-[#ECDFCC] text-2xl mr-4'
+          >
+            {isPasswordHidden ? <FaRegEyeSlash /> : <FaRegEye />}
+          </button>
+        </div>
       </form>
-      <button onClick={handleSignOut}>Logout</button>
     </>
   )
 }

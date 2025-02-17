@@ -2,7 +2,6 @@
 import { useSettings } from '@/lib/utilComponents/SettingsContext';
 import Image from 'next/image';
 import { PiUserCircle } from 'react-icons/pi';
-import { handleSignOut } from '@/lib/actions';
 import UserMenu from '../userMenu/UserMenu';
 import useUserMenu from '@/lib/utilComponents/useUserMenu';
 
@@ -26,8 +25,7 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
         N4G
       </div>
       <button onClick={changeTheme}>Change theme</button>
-      {username && <button onClick={() => handleSignOut()}>Logout</button>}
-      <p>{username}</p>
+      {username && <p className='text-base'>Hi, {username}</p>}
       <div className='nav__links'>
         <button
           onClick={() => toggleUserMenu()}

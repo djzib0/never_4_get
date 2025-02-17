@@ -6,15 +6,13 @@
 @layer utilities {
 
   .content__container {
-    @apply mx-auto max-w-sm p-4 bg-slate-300 dark:bg-[#181C14] dark:text-[#ECDFCC]
+    @apply mx-auto max-w-sm p-4 bg-[#FEFAE0] dark:bg-[#181C14] dark:text-[#ECDFCC]
   }
 
   .nav__container {
-    @apply mx-auto w-full flex items-center justify-between bg-lime-100 dark:bg-[#3F4F44] dark:text-[#DCD7C9] px-1 z-20 h-14
-  }
-
-  .nav__container-dark {
-    @apply mx-auto w-full flex items-center justify-between bg-slate-800 p-1
+    @apply mx-auto w-full flex items-center justify-between px-1 z-20 h-14 
+    bg-[#A4B465] text-[#FEFAE0] dark:bg-[#181C14] dark:text-[#DCD7C9]
+    border-b border-[#626F47] dark:border-[#A27B5C] shadow-md
   }
 
   .nav__logo {
@@ -35,11 +33,11 @@
   }
   
   .link__active {
-    @apply bg-yellow-300 text-slate-800 p-2 rounded-full
+    @apply bg-[#FFCF50] text-slate-800 p-2 rounded-full
   }
 
   .avatar__btn {
-    @apply text-5xl mr-2
+    @apply text-5xl mr-2 border-2 rounded-full border-[#FFCF50]
   }
 
   .avatar__img {
@@ -55,7 +53,8 @@
   }
 }
   .user__menu {
-    @apply bg-slate-400 dark:bg-[#3C3D37] dark:text-slate-50 absolute top-14 right-0 flex flex-col z-10 p-2
+    @apply absolute top-14 right-0 flex flex-col z-10 p-1 shadow-md 
+    font-medium bg-[#A4B465] dark:bg-[#181C14] text-[#FEFAE0] dark:text-[#DCD7C9] 
   }
 
 
