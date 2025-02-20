@@ -5,10 +5,11 @@ type ButtonType = {
     type: "confirm" | "edit" | "cancel";
     size: "small" | "medium" | "large" | "full";
     color: string;
+    darkColor: string;
     handleClick?: () => void;
 }
 
-const Button = ({title, handleClick, type, size, color}: ButtonType) => {
+const Button = ({title, handleClick, type, size, color, darkColor}: ButtonType) => {
 
   let btnWidth = ""
   switch (size) {
@@ -25,10 +26,26 @@ const Button = ({title, handleClick, type, size, color}: ButtonType) => {
       break;
   }
 
-  console.log(btnWidth)
-  
+  let btnHeight = "";
+  switch (size) {
+    case 'small':
+      btnHeight = "h-[40px]"
+    case 'medium':
+      btnHeight = "h-[45px]"
+    case 'large':
+      btnHeight = "h-[50px]"
+    case 'full':
+      btnHeight = "h-[40px]"
+  }
+
+
   return (
-    <button type='button' className={`${btnWidth} ${color}`}>{title}</button>
+    <button 
+      type='button' 
+      className={`${btnWidth} ${btnHeight} ${color} ${darkColor} rounded-md tracking-wider font-bold uppercase`}
+    >
+      {title}
+    </button>
   )
 }
 
