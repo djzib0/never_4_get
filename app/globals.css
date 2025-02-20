@@ -6,7 +6,7 @@
 @layer utilities {
 
   .content__container {
-    @apply mx-auto max-w-sm p-4 bg-[#FEFAE0] dark:bg-[#181C14] dark:text-[#ECDFCC]
+    @apply px-6 py-20 bg-[#FEFAE0] dark:bg-[#3C3D37] dark:text-[#DCD7C9] tracking-wide text-sm/7 leading-7 text-justify min-h-svh
   }
 
   .nav__container {

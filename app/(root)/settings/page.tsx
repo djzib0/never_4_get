@@ -11,7 +11,9 @@ const SettingsPage = async () => {
     }
   
   return (
-    <div>SettingsPage</div>
+    <div className='content__container'>
+      Settings Container
+    </div>
   )
 }
 

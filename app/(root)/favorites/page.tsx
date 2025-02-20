@@ -11,7 +11,9 @@ const FavoritesPage = async () => {
     }
   
   return (
-    <div>FavoritesPage</div>
+    <div className='content__container'>
+      
+    </div>
   )
 }
 

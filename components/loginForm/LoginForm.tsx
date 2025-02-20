@@ -18,12 +18,12 @@ const LoginForm = () => {
     <>
       <form 
       action={formAction}
-      className='flex flex-col dark:bg-[#697565] w-full p-4 rounded-md'
+      className='flex flex-col bg-[#DEE5D4] dark:bg-[#697565] w-full p-4 rounded-md'
       >
 
         <label 
           htmlFor='username'
-          className='text-[#ECDFCC]'
+          className='text-[#697565] dark:text-[#ECDFCC]'
           >
           Login
         </label>
@@ -35,7 +35,7 @@ const LoginForm = () => {
 
         <label 
           htmlFor='password'
-          className='text-[#ECDFCC]'
+          className='text-[#697565] dark:text-[#ECDFCC]'
         >
           Password
         </label>
@@ -47,14 +47,14 @@ const LoginForm = () => {
         <div className='flex flex-row justify-between items-center mt-4'>
           <button 
             type='submit' 
-            className='w-4/5 py-2 dark:bg-[#ECDFCC] rounded-md font-bold uppercase tracking-widest'
+            className='w-4/5 py-2 text-white bg-[#8EACCD] dark:bg-[#ECDFCC] rounded-md font-bold uppercase tracking-widest'
           >
             Login
           </button>
           <button 
             type='button' 
             onClick={toggleHidePassword}
-            className='text-[#ECDFCC] text-2xl mr-4'
+            className='text-[#697565] dark:text-[#ECDFCC] text-2xl mr-4'
           >
             {isPasswordHidden ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>

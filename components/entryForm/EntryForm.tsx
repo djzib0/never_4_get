@@ -1,6 +1,7 @@
 'use client'
 import { addEntry } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
+import Button from '../button/Button'
 
 const EntryForm = ({userId}: {userId: string}) => {
 
@@ -44,6 +45,12 @@ const EntryForm = ({userId}: {userId: string}) => {
         {state?.error && <p>{state.error}</p>}
       </form>
       <button type='submit'>Add new position</button>
+      <div className='flex flex-col'>
+        <Button title='Test Button' size='small' type='confirm' color='bg-[#A594F9]'/>
+        <Button title='Test Button' size='medium' type='edit' color='bg-[#E0E5B6]'/>
+        <Button title='Test Button' size='large' type='cancel' color='bg-[#E1EACD]'/>
+        <Button title='Test Button' size='full' type='cancel' color='bg-[#A594F9]'/>
+      </div>
     </>
   )
 }

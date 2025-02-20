@@ -30,7 +30,7 @@ const EntriesPage = async () => {
   }
 
   return (
-    <div className='content__container'>
+    <div className='content__container '>
         <EntryForm userId={session.user.id}/> 
       <div className='flex flex-col gap-2 my-2 bg-slate-400 w-fit p-4'>
         {entriesLinksArr}
