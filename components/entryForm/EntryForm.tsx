@@ -45,9 +45,10 @@ const EntryForm = ({userId}: {userId: string}) => {
         {state?.error && <p>{state.error}</p>}
       </form>
       <button type='submit'>Add new position</button>
-      <div className='flex flex-col'>
-        <Button title='Test Button' size='small' type='confirm' color='bg-[#E0E5B6]' darkColor='dark:bg-[#A594F9]'/>
-        <Button title='Test Button' size='full' type='cancel' color='bg-[#A594F9]' darkColor='dark:bg-[#E0E5B6]'/>
+      <div className='flex flex-row gap-2 py-4'>
+        <Button title='Test Button' btnWidth='narrow' btnHeight='small' btnType='negative' iconType='info' />
+        <Button title='Test Button' btnWidth='wide' btnHeight='medium' btnType='positive' iconType='alert'  />
+        <Button title='Test Button' btnWidth='full' btnHeight='large' btnType='positive' iconType='question' />
       </div>
     </>
   )
