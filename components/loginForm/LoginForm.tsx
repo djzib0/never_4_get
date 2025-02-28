@@ -2,6 +2,7 @@
 import { handleSignIn } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
+import Button from '../button/Button';
 
 const LoginForm = () => {
 
@@ -28,6 +29,7 @@ const LoginForm = () => {
           Login
         </label>
         <input
+            className='form__input'
             type='text'
             name='username'
             required
@@ -40,17 +42,13 @@ const LoginForm = () => {
           Password
         </label>
         <input
+            className='form__input'
             type={isPasswordHidden ? "password" : ""}
             name='password'
             required
         />
         <div className='flex flex-row justify-between items-center mt-4'>
-          <button 
-            type='submit' 
-            className='w-4/5 py-2 text-white bg-[#8EACCD] dark:bg-[#ECDFCC] rounded-md font-bold uppercase tracking-widest'
-          >
-            Login
-          </button>
+          <Button btnHtmlType='submit' title='login' btnVariant='positive' btnHeight='medium' btnWidth='wider' />
           <button 
             type='button' 
             onClick={toggleHidePassword}

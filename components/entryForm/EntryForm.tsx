@@ -1,7 +1,8 @@
 'use client'
 import { addEntry } from '@/lib/actions'
-import React, { useActionState, useState } from 'react'
+import React, { useActionState, useEffect, useState } from 'react'
 import Button from '../button/Button'
+import { redirect } from 'next/navigation'
 
 const EntryForm = ({userId}: {userId: string}) => {
 
@@ -22,12 +23,18 @@ const EntryForm = ({userId}: {userId: string}) => {
     })
   }
 
+  useEffect(() => {
+    if (state?.success) {
+      redirect("/entries")
+    }
+  }, [state])
+
   return (
     <>
-      <form action={formAction}>
-
-        <label htmlFor='title'>Entry title</label>
+      <form action={formAction} className='form__container'>
+        <label htmlFor='title' className='form__label'>Entry title</label>
         <input
+          className='form__input'
           type='text'
           name='title'
           required
@@ -40,16 +47,9 @@ const EntryForm = ({userId}: {userId: string}) => {
           onChange={handleChange}
           hidden
         />
-
-        <button>Add new entry</button>
+        <Button title='Add new entry' btnHtmlType='submit' btnWidth='full' btnHeight='medium' btnVariant='positive' />
         {state?.error && <p>{state.error}</p>}
       </form>
-      <button type='submit'>Add new position</button>
-      <div className='flex flex-row gap-2 py-4'>
-        <Button title='Test Button' btnWidth='narrow' btnHeight='small' btnType='negative' iconType='info' />
-        <Button title='Test Button' btnWidth='wide' btnHeight='medium' btnType='positive' iconType='alert'  />
-        <Button title='Test Button' btnWidth='full' btnHeight='large' btnType='positive' iconType='question' />
-      </div>
     </>
   )
 }

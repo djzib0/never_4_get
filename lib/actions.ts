@@ -9,7 +9,7 @@ import { UserSettingsType } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntry = async (prevState: any, formData: FormData) => {
-    
+    'use server'
     const title = formData.get("title")
     const userId = formData.get("userId");
 

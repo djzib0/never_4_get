@@ -48,8 +48,13 @@
     @apply flex flex-col
   }
 
-  .label {
-    @apply uppercase text-sm
+  .form__label {
+    @apply text-base font-bold my-2
+  }
+
+  .form__input {
+    @apply p-2 h-[35px] rounded-md text-sm text-[#181C14] w-full outline-none
+  focus:border-[#DCD7C9] focus:border-4
   }
 }
   .user__menu {

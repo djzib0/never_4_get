@@ -12,9 +12,9 @@ const AddEntryPage = async () => {
   }
 
   return (
-    <>
-      <EntryForm userId={session?.user?.id} />
-    </>
+    <div className='content__container '>
+        <EntryForm userId={session.user.id}/> 
+    </div>
   )
 }
 
