@@ -6,6 +6,7 @@ export type EntryType = {
     title: string;
     userId: string;
     isFavourite: boolean;
+    isActive: boolean;
     positions: EntryPositionType[];
     comments: EntryCommentType[];
     createdAt?: Date;

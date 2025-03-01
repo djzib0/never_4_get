@@ -1,5 +1,4 @@
 'use client'
-
 import { EntryPositionType } from '@/lib/types'
 import React from 'react'
 

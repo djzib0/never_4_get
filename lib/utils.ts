@@ -64,3 +64,7 @@ export const getEntryData = async (entryId: string) => {
   
     return res.json();
   }
+
+  export const capitalizeFirstLetter = (str: string): string =>  {
+    return str.slice(0, 1).toUpperCase() + str.slice(1)
+  }
