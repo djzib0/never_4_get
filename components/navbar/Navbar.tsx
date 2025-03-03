@@ -19,7 +19,7 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
   // }
 
   return (
-    <nav className={`nav__container fixed top-0`}>
+    <nav className={`nav__container fixed top-0 border-[#FFCF50] border-b-2`}>
     {/* <nav className={`nav__container-dark`}> */}
       <div className='nav__logo'>
         N4G

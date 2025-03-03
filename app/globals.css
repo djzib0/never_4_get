@@ -12,7 +12,7 @@
   .nav__container {
     @apply mx-auto w-full flex items-center justify-between px-1 z-20 h-14 
     bg-[#A4B465] text-[#FEFAE0] dark:bg-[#181C14] dark:text-[#DCD7C9]
-    border-b border-[#626F47] dark:border-[#A27B5C] shadow-md
+    dark:border-[#A27B5C] shadow-md
   }
 
   .nav__logo {

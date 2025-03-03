@@ -19,7 +19,7 @@ const EntriesPage = async () => {
         id={entry._id}
         title={entry.title}
         isActive={entry.isActive}
-        isFavorite={entry.isFavourite}
+        isFavourite={entry.isFavourite}
         positionsNumber={entry.positions.length}
         commentsNumber={entry.comments.length}
       />

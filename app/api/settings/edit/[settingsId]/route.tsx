@@ -9,8 +9,6 @@ export const PUT = async (request: NextRequest, {params}: {params: Promise<{sett
     const {settingsId} = await params;
     const newSettings = await request.json();
 
-    console.log(newSettings, " request")
-
     try {
         connectToDb();
  

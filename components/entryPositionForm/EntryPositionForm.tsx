@@ -25,7 +25,7 @@ const EntryPositionForm = ({entryId} : {entryId: string}) => {
     <>
       <form action={formAction}>
 
-        <label htmlFor='title'>Entry title</label>
+        <label htmlFor='title'>Position title</label>
         <input
           type='text'
           name='title'
