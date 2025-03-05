@@ -1,9 +1,8 @@
 import { User } from "@/lib/models";
 import { connectToDb } from "@/lib/utils"
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request: NextApiRequest, {params} : {params: Promise<{userId: string}>}) => {
+export const GET = async (request: NextRequest, {params} : {params: Promise<{userId: string}>}) => {
 
     const {userId} = await params;
 

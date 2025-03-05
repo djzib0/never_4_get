@@ -1,10 +1,9 @@
 import { Entry } from "@/lib/models";
 import { connectToDb } from "@/lib/utils"
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const GET = async (request: NextApiRequest, {params} : {params: {entryId: string}}) => {
+export const GET = async (request: NextRequest, {params} : {params: {entryId: string}}) => {
 
     const {entryId} = params;
     console.log(entryId, " entry Id in route")
