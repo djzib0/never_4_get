@@ -3,9 +3,9 @@ import { connectToDb } from "@/lib/utils"
 import { NextRequest, NextResponse } from "next/server";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const GET = async (request: NextRequest, {params} : {params: {entryId: string}}) => {
+export const GET = async (request: NextRequest, {params} : {params: Promise<{entryId: string}>}) => {
 
-    const {entryId} = params;
+    const {entryId} = await params;
     console.log(entryId, " entry Id in route")
     try {
         connectToDb();
