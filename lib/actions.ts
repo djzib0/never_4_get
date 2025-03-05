@@ -196,7 +196,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
       return response.json()
 }
 
-export const updateEntry = async (entry: EntryType, isActive: boolean, isFavourite: boolean) => {
+export const updateEntry = async (entry: EntryType) => {
     'use client'
 
     const response = await fetch(`http://localhost:3000/api/entries/${entry._id}/edit`, {
@@ -207,13 +207,9 @@ export const updateEntry = async (entry: EntryType, isActive: boolean, isFavouri
         body: JSON.stringify(
             { 
                 ...entry,
-                isActive: isActive,
-                isFavourite: isFavourite,
             }
         ), // Field to update
       });
-
-    //   console.log(response.json(), " response json()")
 
     if (response.ok) {
         revalidatePath(`/entries/${entry._id}`)
