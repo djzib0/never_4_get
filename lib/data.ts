@@ -14,7 +14,7 @@ export const getEntries = async () => {
 
 export const getSettingsData = async (userId: string | undefined) => {
     // fetch entry data by entry id
-    const res = await fetch(`https://never-4-get.vercel.app/api/settings/${userId}`)
+    const res = await fetch(`/api/settings/${userId}`)
   
     if (!res.ok) {
       throw new Error("Couldn't not fetch settings data.")

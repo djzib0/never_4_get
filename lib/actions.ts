@@ -180,7 +180,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
     'use client'
     const settingsId = settings._id
 
-    const response = await fetch(`https://never-4-get.vercel.app/api/settings/edit/${settingsId}`, {
+    const response = await fetch(`/api/settings/edit/${settingsId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -199,7 +199,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
 export const updateEntry = async (entry: EntryType) => {
     'use client'
 
-    const response = await fetch(`https://never-4-get.vercel.app/api/entries/${entry._id}/edit`, {
+    const response = await fetch(`/api/entries/${entry._id}/edit`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

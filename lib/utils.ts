@@ -45,7 +45,7 @@ export const loadFromLocalStorage = (key: string) => {
 export const getEntryData = async (entryId: string) => {
   
     // fetch entry data by entry id
-    const res = await fetch(`https://never-4-get.vercel.app/api/entries/${entryId}`)
+    const res = await fetch(`/api/entries/${entryId}`)
   
     if (!res.ok) {
       throw new Error("Couldn't not fetch entry data.")
@@ -56,7 +56,7 @@ export const getEntryData = async (entryId: string) => {
 
   
   export const getEntriesData = async () => {
-    const res = await fetch('https://never-4-get.vercel.app/api/entries')
+    const res = await fetch('/api/entries')
   
     if (!res.ok) {
       throw new Error("Something went wrong")
