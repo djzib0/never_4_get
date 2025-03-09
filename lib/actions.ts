@@ -181,7 +181,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
     const settingsId = settings._id
 
     const response = await fetch(`${process.env.API_URL}}/api/settings/edit/${settingsId}`, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
