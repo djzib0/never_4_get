@@ -14,7 +14,8 @@ export const connectToDb = async () => {
             return;
         }
         const db = await mongoose.connect(process.env.MONGO); 
-        connection.isConnected = db.connection[0].readyState;
+        // connection.isConnected = db.connection[0].readyState;
+        connection.isConnected = db.connection[0];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.log(error)
