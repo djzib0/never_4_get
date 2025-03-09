@@ -45,7 +45,7 @@ export const loadFromLocalStorage = (key: string) => {
 export const getEntryData = async (entryId: string) => {
   
     // fetch entry data by entry id
-    const res = await fetch(`/api/entries/${entryId}`)
+    const res = await fetch(`${process.env.API_URL}/api/entries/${entryId}`)
   
     if (!res.ok) {
       throw new Error("Couldn't not fetch entry data.")
@@ -56,7 +56,7 @@ export const getEntryData = async (entryId: string) => {
 
   
   export const getEntriesData = async () => {
-    const res = await fetch('/api/entries')
+    const res = await fetch(`${process.env.API_URL}/api/entries`)
   
     if (!res.ok) {
       throw new Error("Something went wrong")

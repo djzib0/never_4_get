@@ -180,7 +180,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
     'use client'
     const settingsId = settings._id
 
-    const response = await fetch(`/api/settings/edit/${settingsId}`, {
+    const response = await fetch(`${process.env.API_URL}}/api/settings/edit/${settingsId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

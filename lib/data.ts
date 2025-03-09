@@ -14,7 +14,7 @@ export const getEntries = async () => {
 
 export const getSettingsData = async (userId: string | undefined) => {
     // fetch entry data by entry id
-    const res = await fetch(`/api/settings/${userId}`)
+    const res = await fetch(`${process.env.API_URL}/api/settings/${userId}`)
   
     if (!res.ok) {
       throw new Error("Couldn't not fetch settings data.")
