@@ -199,7 +199,7 @@ export const updateSettings = async (settings: UserSettingsType) => {
 export const updateEntry = async (entry: EntryType) => {
     'use client'
 
-    const response = await fetch(`/api/entries/${entry._id}/edit`, {
+    const response = await fetch(`${process.env.API_URL}/api/entries/${entry._id}/edit`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
