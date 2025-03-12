@@ -1,6 +1,7 @@
 'use client'
 import { addEntryPosition } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
+import Button from '../button/Button'
 
 const EntryPositionForm = ({entryId} : {entryId: string}) => {
 
@@ -23,10 +24,11 @@ const EntryPositionForm = ({entryId} : {entryId: string}) => {
 
   return (
     <>
-      <form action={formAction}>
+      <form className='form__container' action={formAction}>
 
-        <label htmlFor='title'>Position title</label>
+        <label htmlFor='title' className='form__label'>Position title</label>
         <input
+          className='form__input'
           type='text'
           name='title'
           required
@@ -40,7 +42,7 @@ const EntryPositionForm = ({entryId} : {entryId: string}) => {
           hidden
         />
 
-        <button>Add new position</button>
+        <Button title='Add position' btnHtmlType='submit' btnWidth='full' btnHeight='medium' btnVariant='positive' />
         {state?.error && <p>{state.error}</p>}
       </form>
     </>
