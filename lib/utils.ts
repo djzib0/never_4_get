@@ -55,17 +55,6 @@ export const getEntryData = async (entryId: string) => {
     return res.json();
   }
 
-  
-  export const getEntriesData = async () => {
-    const res = await fetch(`${process.env.API_URL}/api/entries`)
-  
-    if (!res.ok) {
-      throw new Error("Something went wrong")
-    }
-  
-    return res.json();
-  }
-
   export const capitalizeFirstLetter = (str: string): string =>  {
     return str.slice(0, 1).toUpperCase() + str.slice(1)
   }

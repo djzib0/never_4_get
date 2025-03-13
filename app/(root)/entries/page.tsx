@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import EntryElement from '@/components/entryElement/EntryElement';
 import { EntryType } from '@/lib/types';
-import { getEntriesData } from '@/lib/utils';
+import { getEntriesData } from '@/lib/actions';
 import { redirect } from 'next/navigation';
 import React from 'react'
 

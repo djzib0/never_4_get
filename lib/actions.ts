@@ -217,3 +217,26 @@ export const updateEntry = async (entry: EntryType) => {
      
     return response.json()
 }
+
+export const getEntriesData = async () => {
+    const res = await fetch(`${process.env.API_URL}/api/entries`)
+  
+    if (!res.ok) {
+      throw new Error("Something went wrong")
+    }
+  
+    return res.json();
+}
+
+export const getActiveEntries = async (userId: string) => {
+    const res = await fetch(`${process.env.API_URL}/api/entries/active/${userId}`)
+  
+    if (!res.ok) {
+      throw new Error("Something went wrong")
+    }
+  
+    return res.json();
+  }
+
+
+
