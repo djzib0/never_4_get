@@ -10,10 +10,14 @@ const  HomePage = async () => {
  
   const session = await auth();
 
+  if (!session?.user?.id) {
+    redirect("/login")
+  }
+
   const entries = session?.user?.id && await getActiveEntries(session?.user?.id);
 
   // map through entries to display links to entry details
-  const entriesLinksArr = entries.map((entry: EntryType) => {
+  const entriesLinksArr = entries.length > 0 && entries.map((entry: EntryType) => {
     return (
       <EntryElement
         key={entry._id}
@@ -26,10 +30,6 @@ const  HomePage = async () => {
       />
     )
   })
-  
-  if (!session?.user?.id) {
-    redirect("/login")
-  }
 
   return (
     <div className='content__container '>

@@ -16,7 +16,7 @@ export type EntryType = {
 export type EntryPositionType = {
     _id: string;
     title: string;
-    isActive: boolean;
+    isFinished: boolean;
     note: string;
 }
 

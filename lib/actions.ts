@@ -38,7 +38,8 @@ export const addEntryPosition = async (prevState: any, formData: FormData) => {
     try {
         connectToDb();
         const newPosition = await EntryPosition.create({
-            title
+            title,
+            note: ""
         })
         
         const update = {$push: {positions: newPosition._id}};
