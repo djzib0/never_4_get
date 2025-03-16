@@ -5,7 +5,7 @@ import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
 import { redirect } from "next/navigation";
-import { EntryType, UserSettingsType } from "./types";
+import { EntryPositionType, EntryType, UserSettingsType } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntry = async (prevState: any, formData: FormData) => {
@@ -57,6 +57,51 @@ export const addEntryPosition = async (prevState: any, formData: FormData) => {
     } catch (error) {
         return {error: error}
     }
+}
+
+export const deleteEntryPosition = async (entryId: string, entryPositionId: string) => {
+    'use server'
+
+    try {
+        connectToDb();
+        await EntryPosition.findByIdAndDelete(entryPositionId)
+
+        const update = {$pull: {positions: entryPositionId}}
+
+        await Entry.findByIdAndUpdate(
+            entryId,
+            update
+        )
+
+        revalidatePath("/entries")
+
+        return {success: true}
+
+    } catch (error) {
+        return error
+    }
+}
+
+export const updateEntryPosition = async (entryPosition: EntryPositionType) => {
+    'use server'
+
+    const entryPositionId = entryPosition._id
+
+    const response = await fetch(`${process.env.API_URL}/api/entryPositions/${entryPositionId}/edit`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+            { 
+                ...entryPosition,
+            }
+        ), // Field to update
+      });
+
+      revalidatePath(`entries/${entryPosition._id}`)
+
+      return response.json()
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -237,7 +282,7 @@ export const getActiveEntries = async (userId: string) => {
     }
   
     return res.json();
-  }
+}
 
 
 

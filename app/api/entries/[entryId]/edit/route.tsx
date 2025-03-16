@@ -11,8 +11,6 @@ export const PUT = async (request: NextRequest, {params}: {params: Promise<{entr
     try {
         connectToDb();
         const entryToUpdate = await Entry.findById(newProperties.entryId)
-
-        console.log(entryToUpdate, " entry to update")
     
         const updatedEntry = await Entry.findByIdAndUpdate(
             entryId,

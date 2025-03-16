@@ -13,7 +13,7 @@ const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
 
   const entryPositionsArr = entryData && entryData.positions.map((position: EntryPositionType) => {
     return (
-      <EntryPosition key={position._id} entryPosition={position} />
+      <EntryPosition key={position._id} entryPosition={position} entryId={entryId} />
     )
   })
 
