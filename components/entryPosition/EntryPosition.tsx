@@ -8,6 +8,7 @@ import { RiStickyNoteAddLine } from 'react-icons/ri'
 import { IoTrashOutline } from 'react-icons/io5'
 import { deleteEntryPosition, updateEntryPosition } from '@/lib/actions'
 import Modal from '../modal/Modal'
+import useToastNotification from '@/lib/utilComponents/useToastNotification'
 
 const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionType, entryId: string}) => {
  
@@ -22,9 +23,13 @@ const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionTy
     setIsModalOn(bool);
   }
 
+  // utilize custom hook
+  const {isToastNotificationOn, ToastNotification, toggleToastNotification} = useToastNotification();
+
 
   const toggleNotes = () => {
     setIsEntryPositionNoteFormOn(prevState => !prevState);
+    toggleToastNotification("notes are active")
   }
 
   return (
@@ -68,6 +73,8 @@ const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionTy
         handleFunc={() => deleteEntryPosition(entryId, entryPosition._id)}
         closeFunc={() => setIsModalOn(false)}
       />}
+
+      {isToastNotificationOn && <ToastNotification />}
 
     </div>
   )
