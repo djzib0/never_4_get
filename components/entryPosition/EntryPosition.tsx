@@ -29,7 +29,7 @@ const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionTy
 
   const toggleNotes = () => {
     setIsEntryPositionNoteFormOn(prevState => !prevState);
-    toggleToastNotification("notes are active")
+    toggleToastNotification("error", "notes are active")
   }
 
   return (
