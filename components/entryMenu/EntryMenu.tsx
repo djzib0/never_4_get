@@ -6,6 +6,7 @@ import { BiSolidCommentDetail } from 'react-icons/bi';
 import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from 'react-icons/io';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { RiMenuAddFill } from 'react-icons/ri';
+import EntryPositionForm from '../entryPositionForm/EntryPositionForm';
 
 const EntryMenu = ({entry} : {entry: EntryType}) => {
 
@@ -13,7 +14,9 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
         entry
   )
 
+  // state variables
   const [isCommentsComponentOn, setIsCommentsComponentOn] = useState(false);
+  const [isAddPositionFormOn, setIsAddPositionFormOn] = useState(false);
 
   const handleUpdate = (entry: EntryType) => {
     startTransition(() => {
@@ -24,7 +27,13 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
   }
 
   const toggleCommentsComponentOn = () => {
+    setIsAddPositionFormOn(false);
     setIsCommentsComponentOn(prevState => !prevState);
+  }
+
+  const togglePositionForm = () => {
+    setIsCommentsComponentOn(false);
+    setIsAddPositionFormOn(prevState => !prevState);
   }
 
   return (
@@ -51,7 +60,7 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
       <div className='w-full flex flex-row justify-start gap-4 mb-4 text-[#626F47] dark:text-[#3C3D37]'>
         <button 
             className='flex flex-row items-center w-1/2 text-base font-medium bg-white border-2 border-[#626F47] dark:border-[#A27B5C] shadow-md px-2 py-2 rounded-md'
-            onClick={toggleCommentsComponentOn}
+            onClick={togglePositionForm}
             >
             <RiMenuAddFill className='text-2xl'/>
             <p className='ml-2'>Add position</p>
@@ -65,7 +74,8 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
           </button>
       </div>
       
-      {isCommentsComponentOn && <p>Here will be a component with comments</p>}
+      {isAddPositionFormOn && <EntryPositionForm entryId={entry._id} />}
+      {isCommentsComponentOn && <p>Will show here comments component, when created</p>}
     </div>
   )
 }

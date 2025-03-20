@@ -43,6 +43,7 @@ const EntryPositionForm = ({entryId} : {entryId: string}) => {
         />
 
         <Button title='Add position' btnHtmlType='submit' btnWidth='full' btnHeight='medium' btnVariant='positive' />
+        
         {state?.error && <p>{state.error}</p>}
       </form>
     </>

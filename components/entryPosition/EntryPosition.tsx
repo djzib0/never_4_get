@@ -8,7 +8,6 @@ import { RiStickyNoteAddLine } from 'react-icons/ri'
 import { IoTrashOutline } from 'react-icons/io5'
 import { deleteEntryPosition, updateEntryPosition } from '@/lib/actions'
 import Modal from '../modal/Modal'
-import useToastNotification from '@/lib/utilComponents/useToastNotification'
 
 const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionType, entryId: string}) => {
  
@@ -23,18 +22,15 @@ const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionTy
     setIsModalOn(bool);
   }
 
-  // utilize custom hook
-  const {isToastNotificationOn, ToastNotification, toggleToastNotification} = useToastNotification();
-
-
   const toggleNotes = () => {
     setIsEntryPositionNoteFormOn(prevState => !prevState);
-    toggleToastNotification("error", "notes are active")
   }
 
   return (
-    <div className='flex justify-between items-center my-4'>
-      <p className='w-4/5 bg-red-300 px-2 font-medium tracking-wider rounded-sm'>
+    <div className='before:bg-[#FFCF50] before:w-[10px] before:h-full flex justify-between items-center my-4 h-[40px] bg-white'>
+      
+
+      <p className='w-4/5 px-2 font-thin tracking-wider rounded-sm'>
         {entryPosition && entryPosition.title}
       </p>
       
@@ -73,9 +69,6 @@ const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionTy
         handleFunc={() => deleteEntryPosition(entryId, entryPosition._id)}
         closeFunc={() => setIsModalOn(false)}
       />}
-
-      {isToastNotificationOn && <ToastNotification />}
-
     </div>
   )
 }

@@ -45,11 +45,11 @@
   }
 
   .form__container {
-    @apply flex flex-col
+    @apply flex flex-col bg-[#DEE5D4] dark:bg-[#697565] rounded-md mx-auto p-4 w-full max-w-[500px]
   }
 
   .form__label {
-    @apply text-base font-bold my-2
+    @apply text-base font-bold my-2 text-[#697565] dark:text-[#ECDFCC]
   }
 
   .form__input {

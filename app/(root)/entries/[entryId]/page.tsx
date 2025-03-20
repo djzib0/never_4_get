@@ -1,7 +1,5 @@
-import EntryCommentForm from '@/components/entryCommentForm/EntryCommentForm';
 import EntryMenu from '@/components/entryMenu/EntryMenu';
 import EntryPosition from '@/components/entryPosition/EntryPosition';
-import EntryPositionForm from '@/components/entryPositionForm/EntryPositionForm';
 import { EntryPositionType } from '@/lib/types';
 import { getEntryData } from '@/lib/utils';
 import React from 'react';
@@ -21,8 +19,7 @@ const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
   return (
     <div className='content__container'>
       <EntryMenu entry={entryData}/>
-      <EntryPositionForm entryId={entryId}/>
-      <EntryCommentForm entryId={entryId} />
+      {/* <EntryCommentForm entryId={entryId} /> */}
       {entryPositionsArr}
     </div>
   )
