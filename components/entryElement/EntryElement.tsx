@@ -14,12 +14,12 @@ type EntryElementType = {
   id?: string;
   title: string;
   isActive: boolean;
-  isFavourite: boolean;
+  isFavorite: boolean;
   positionsNumber: number;
   commentsNumber: number;
 }
 
-const EntryElement = ({id, title, isActive, isFavourite, positionsNumber, commentsNumber} : EntryElementType) => {
+const EntryElement = ({id, title, isActive, isFavorite, positionsNumber, commentsNumber} : EntryElementType) => {
   
   return (
     <Link 
@@ -32,7 +32,7 @@ const EntryElement = ({id, title, isActive, isFavourite, positionsNumber, commen
       </div>
       <div className='flex flex-row items-center text-2xl gap-4'>
         <p>{isActive ? <IoMdCheckmarkCircleOutline className='!text-[#007AFF]' /> :  <IoMdCloseCircleOutline className='!text-[#B0B0B0]' />}</p>
-        <p>{isFavourite ? <MdFavorite className='!text-red-600' /> : <MdFavoriteBorder className='!text-red-300' />}</p>
+        <p>{isFavorite ? <MdFavorite className='!text-red-600' /> : <MdFavoriteBorder className='!text-red-300' />}</p>
         <div className='relative'>
           <TbListNumbers />
           <div className='absolute top-3 left-4 bg-[#FFCF50] text-slate-800 !text-sm font-normal rounded-full py-0 px-1'>

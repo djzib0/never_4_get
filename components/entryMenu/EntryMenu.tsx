@@ -49,10 +49,10 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
 
         <button 
           className='flex flex-row items-center w-1/2 text-base font-medium bg-yellow-300 border-2 border-[#626F47] dark:border-[#FEFAE0] shadow-md px-2 py-2 rounded-md'
-          onClick={() => handleUpdate({...entry, isFavourite: !entry.isFavourite})}
+          onClick={() => handleUpdate({...entry, isFavorite: !entry.isFavorite})}
         >
-          {optimisticEntry.isFavourite ? <MdFavorite className='!text-red-600 text-2xl' /> : <MdFavoriteBorder className='!text-red-300 text-2xl' />} 
-          <p className='ml-2'>{optimisticEntry.isFavourite ? "Remove from favourites" : "Add to favourites"}</p>
+          {optimisticEntry.isFavorite ? <MdFavorite className='!text-red-600 text-2xl' /> : <MdFavoriteBorder className='!text-red-300 text-2xl' />} 
+          <p className='ml-2'>{optimisticEntry.isFavorite ? "Remove from favourites" : "Add to favourites"}</p>
         </button>
       </div>
 

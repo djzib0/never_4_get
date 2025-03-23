@@ -1,11 +1,10 @@
 'use client'
-import { EntryType } from '@/lib/types'
 import React, { useState } from 'react'
 import EntryElement from '../entryElement/EntryElement';
+import { EntryType } from '@/lib/types';
 import FilterForm from '../filterForm/FilterForm';
 
-const HomePageContent = ({entries}: {entries: EntryType[]}) => {
-
+const FavoritesPageContent = ({entries}: {entries: EntryType[]}) => {
   // state variables
   const [filterData, setFilterData] = useState("");
 
@@ -41,4 +40,4 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
   )
 }
 
-export default HomePageContent
+export default FavoritesPageContent

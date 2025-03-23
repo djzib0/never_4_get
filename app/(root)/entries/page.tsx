@@ -1,39 +1,25 @@
 import { auth } from '@/auth';
-import EntryElement from '@/components/entryElement/EntryElement';
-import { EntryType } from '@/lib/types';
 import { getEntriesData } from '@/lib/actions';
 import { redirect } from 'next/navigation';
 import React from 'react'
+import EntriesPageContent from '@/components/entriesPageContent/EntriesPageContent';
 
 const EntriesPage = async () => {
 
   const session = await auth();
 
-  const entries = await getEntriesData();
-
-  // map through entries to display links to entry details
-  const entriesLinksArr = entries.map((entry: EntryType) => {
-    return (
-      <EntryElement
-        key={entry._id}
-        id={entry._id}
-        title={entry.title}
-        isActive={entry.isActive}
-        isFavourite={entry.isFavourite}
-        positionsNumber={entry.positions.length}
-        commentsNumber={entry.comments.length}
-      />
-    )
-  })
   
   if (!session?.user?.id) {
     redirect("/login")
   }
+  
+  console.log(session.user.id, 'userId')
+  const entries = session.user.id && await getEntriesData(session.user.id);
 
   return (
     <div className='content__container '>
       <div className='flex flex-col gap-2'>
-        {entriesLinksArr}
+        <EntriesPageContent entries={entries} />
       </div>
     </div>
   )

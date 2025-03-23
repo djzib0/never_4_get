@@ -1,11 +1,10 @@
 'use client'
-import { EntryType } from '@/lib/types'
+import { EntryType } from '@/lib/types';
 import React, { useState } from 'react'
 import EntryElement from '../entryElement/EntryElement';
 import FilterForm from '../filterForm/FilterForm';
 
-const HomePageContent = ({entries}: {entries: EntryType[]}) => {
-
+const EntriesPageContent = ({entries}: {entries: EntryType[]}) => {
   // state variables
   const [filterData, setFilterData] = useState("");
 
@@ -14,7 +13,7 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
   }
 
   // filter entries based on the filter form input
-  const filteredEntries = entries.length > 0 && entries.filter((entry: EntryType) => {
+  const filteredEntries = entries && entries.filter((entry: EntryType) => {
     return entry.title.toLowerCase().includes(filterData.toLowerCase())
   })
 
@@ -41,4 +40,4 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
   )
 }
 
-export default HomePageContent
+export default EntriesPageContent

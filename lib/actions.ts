@@ -264,13 +264,23 @@ export const updateEntry = async (entry: EntryType) => {
     return response.json()
 }
 
-export const getEntriesData = async () => {
-    const res = await fetch(`${process.env.API_URL}/api/entries`)
+export const getEntriesData = async (userId: string) => {
+    const res = await fetch(`${process.env.API_URL}/api/entries/all/${userId}`)
   
     if (!res.ok) {
-      throw new Error("Something went wrong")
+       throw new Error("Something went wrong sir")
     }
   
+    return res.json();
+}
+
+export const getFavoritesEntriesData = async (userId: string) => {
+    const res = await fetch(`${process.env.API_URL}/api/entries/favorites/${userId}`)
+
+    if (!res.ok) {
+        throw new Error("Something went wrong")
+    }
+
     return res.json();
 }
 
