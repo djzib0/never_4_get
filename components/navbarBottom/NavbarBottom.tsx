@@ -32,7 +32,7 @@ const NavbarBottom = () => {
 
       <Link 
         href={"/entries/add"} 
-        className={`nav__icon nav__icon--center bg-[#A4B465] text-[#FEFAE0] dark:bg-[#181C14] dark:text-[#DCD7C9] ${pathName === "/add" ? 'link__active': ''}`}
+        className={`nav__icon nav__icon--center bg-[#A4B465] text-[#FEFAE0] dark:bg-[#181C14] dark:text-[#DCD7C9] ${pathName === "/entries/add" ? 'link__active': ''}`}
       >
         <CiCirclePlus />
       </Link>

@@ -27,7 +27,9 @@ const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionTy
   }
 
   return (
-    <div className='before:bg-[#FFCF50] before:w-[10px] before:h-full flex justify-between items-center my-4 h-[40px] bg-white'>
+    <div 
+    className='before:bg-[#FFCF50] before:w-[10px] before:h-full flex justify-between
+      items-center my-4 h-[40px] bg-white text-black dark:text-[#3C3D37]'>
       
 
       <p className='w-4/5 px-2 font-thin tracking-wider rounded-sm'>

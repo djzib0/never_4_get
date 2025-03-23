@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import EntryElement from '../entryElement/EntryElement';
 import { EntryType } from '@/lib/types';
 import FilterForm from '../filterForm/FilterForm';
+import Link from 'next/link';
 
 const FavoritesPageContent = ({entries}: {entries: EntryType[]}) => {
   // state variables
@@ -10,6 +11,16 @@ const FavoritesPageContent = ({entries}: {entries: EntryType[]}) => {
 
   const onInputChange = (value: string) => {
     setFilterData(value)
+  }
+
+  if (entries.length === 0) {
+    return (
+      <div>
+        You don&apos;t have any entries added to favorites. Click{" "}
+        <Link href={"/entries"} className='underline font-semibold'>here</Link>{" "}
+        to see your all entries.
+      </div>
+    )
   }
 
   // filter entries based on the filter form input

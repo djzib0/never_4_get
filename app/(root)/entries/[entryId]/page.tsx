@@ -9,8 +9,21 @@ const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
   const {entryId} = await params;
   const entryData = await getEntryData(entryId);
 
+  const unfinishedEntryPositions = entryData.positions.filter((position: EntryPositionType) => {
+    return !position.isFinished
+  })
 
-  const entryPositionsArr = entryData && entryData.positions.map((position: EntryPositionType) => {
+  const finishedEntryPositions = entryData.positions.filter((position: EntryPositionType) => {
+    return position.isFinished
+  })
+
+  const unfinishedEntryPositionsArr = unfinishedEntryPositions && unfinishedEntryPositions.map((position: EntryPositionType) => {
+    return (
+      <EntryPosition key={position._id} entryPosition={position} entryId={entryId} />
+    )
+  })
+
+  const finishedEntryPositionsArr = finishedEntryPositions && finishedEntryPositions.map((position: EntryPositionType) => {
     return (
       <EntryPosition key={position._id} entryPosition={position} entryId={entryId} />
     )
@@ -20,7 +33,15 @@ const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
     <div className='content__container'>
       <EntryMenu entry={entryData}/>
       {/* <EntryCommentForm entryId={entryId} /> */}
-      {entryPositionsArr}
+      {unfinishedEntryPositionsArr}
+      {finishedEntryPositions.length > 0 && 
+        <div>
+          <h3>Finished</h3>
+          {finishedEntryPositionsArr}
+        </div>
+      }
+
+      
     </div>
   )
 }

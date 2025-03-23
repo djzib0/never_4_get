@@ -288,7 +288,7 @@ export const getActiveEntries = async (userId: string) => {
     const res = await fetch(`${process.env.API_URL}/api/entries/active/${userId}`)
   
     if (!res.ok) {
-      throw new Error("Something went wrong")
+        throw new Error("Something went wrong")
     }
   
     return res.json();
