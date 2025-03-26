@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import Button from '../button/Button';
-import TextCounter from '../textCounter/TextCounter';
+import Button from '../../button/Button';
+import TextCounter from '../../textCounter/TextCounter';
 
 const EntryPositionNoteForm = ({entryPositionId, note, closeForm}: {entryPositionId: string, note: string, closeForm: () => void}) => {
 

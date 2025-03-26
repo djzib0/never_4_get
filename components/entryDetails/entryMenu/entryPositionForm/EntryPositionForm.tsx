@@ -1,7 +1,7 @@
 'use client'
 import { addEntryPosition } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
-import Button from '../button/Button'
+import Button from '../../../button/Button'
 
 const EntryPositionForm = ({entryId} : {entryId: string}) => {
 

@@ -6,11 +6,10 @@ import { NextRequest, NextResponse } from "next/server";
 export const GET = async (request: NextRequest, {params} : {params: Promise<{entryId: string}>}) => {
 
     const {entryId} = await params;
-    console.log(entryId, " entry Id in route")
     try {
         connectToDb();
         const entry = await Entry.findById(entryId)
-        .populate("positions");
+        .populate("positions").populate("comments");
         return NextResponse.json(entry);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

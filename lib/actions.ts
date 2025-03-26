@@ -109,16 +109,19 @@ export const addEntryComment = async (prevState: any, formData: FormData) => {
     'use server'
 
     const {comment, entryId} = Object.fromEntries(formData)
+    console.log(comment, "comment")
+    console.log(entryId, "entry Id")
 
     try {
         connectToDb();
         const newComment = await EntryComment.create({
-            comment
+            comment: comment
         })
+
         const update = {$push: {comments: newComment._id}};
 
         await Entry.findByIdAndUpdate(entryId, update, {new: true})
-        .populate("comments")
+        .populate("comments").exec();
 
         revalidatePath("/entries")
         return {...prevState, success: true}

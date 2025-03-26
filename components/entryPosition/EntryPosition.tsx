@@ -1,7 +1,7 @@
 'use client'
 import { EntryPositionType } from '@/lib/types'
 import React, { useState } from 'react'
-import EntryPositionNoteForm from '../entryPositionNoteForm/EntryPositionNoteForm'
+import EntryPositionNoteForm from './entryPositionNoteForm/EntryPositionNoteForm'
 import { FaRegCheckCircle } from 'react-icons/fa'
 import { FaRegCircle } from 'react-icons/fa6'
 import { RiStickyNoteAddLine } from 'react-icons/ri'

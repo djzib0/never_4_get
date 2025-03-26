@@ -6,13 +6,16 @@ import { BiSolidCommentDetail } from 'react-icons/bi';
 import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from 'react-icons/io';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { RiMenuAddFill } from 'react-icons/ri';
-import EntryPositionForm from '../entryPositionForm/EntryPositionForm';
+import EntryPositionForm from './entryPositionForm/EntryPositionForm';
+import EntryNotes from '../entryNotes/EntryNotes';
 
 const EntryMenu = ({entry} : {entry: EntryType}) => {
 
   const [optimisticEntry, updateOptimisticEntry] = useOptimistic(
         entry
   )
+
+  console.log(entry, "entry data")
 
   // state variables
   const [isCommentsComponentOn, setIsCommentsComponentOn] = useState(false);
@@ -70,12 +73,12 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
             onClick={toggleCommentsComponentOn}
             >
             <BiSolidCommentDetail className='text-2xl'/>
-            <p className='ml-2'>Show notes</p>
+            <p className='ml-2'>Show entry notes</p>
           </button>
       </div>
       
       {isAddPositionFormOn && <EntryPositionForm entryId={entry._id} />}
-      {isCommentsComponentOn && <p>Will show here comments component, when created</p>}
+      {isCommentsComponentOn && <EntryNotes handleClose={toggleCommentsComponentOn} comments={entry.comments} />}
     </div>
   )
 }

@@ -9,7 +9,7 @@ export const GET = async (request: NextRequest, {params} : {params: Promise<{use
 
     try {
         connectToDb();
-        const entries = await Entry.find({userId: userId});
+        const entries = await Entry.find({userId: userId}).populate("comments");
         return NextResponse.json(entries);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

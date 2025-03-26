@@ -7,9 +7,6 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { TbListNumbers } from 'react-icons/tb';
 
-
-
-
 type EntryElementType = {
   id?: string;
   title: string;
