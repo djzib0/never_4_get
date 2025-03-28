@@ -1,17 +1,18 @@
 import { EntryCommentType } from '@/lib/types';
 import React from 'react';
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import EntryNote from './entryNote/EntryNote';
 
 
-const EntryNotes = ({comments, handleClose}: {comments: EntryCommentType[] ;handleClose: () => void}) => {
+const EntryNotes = ({comments, handleClose, entryId}: {comments: EntryCommentType[] ;handleClose: () => void; entryId: string}) => {
 
   const commentsArr = comments.length > 0 && comments.map((comment) => {
-    return <p key={comment._id}>{comment.comment}</p>
+    return <EntryNote key={comment._id} comment={comment.comment} entryId={entryId}/>
   })
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/30 dark:bg-black/20">
-      <div className="relative bg-white p-6 rounded-lg shadow-lg w-4/5 max-h-[50vh] overflow-y-auto text-center scroll-m-0">
+      <div className="relative bg-white py-4 rounded-lg shadow-lg w-4/5 max-h-[50vh] overflow-y-auto text-center scroll-m-0">
 
         <button 
           onClick={() => handleClose()}

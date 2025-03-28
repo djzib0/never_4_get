@@ -78,7 +78,7 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
       </div>
       
       {isAddPositionFormOn && <EntryPositionForm entryId={entry._id} />}
-      {isCommentsComponentOn && <EntryNotes handleClose={toggleCommentsComponentOn} comments={entry.comments} />}
+      {isCommentsComponentOn && <EntryNotes entryId={entry._id} handleClose={toggleCommentsComponentOn} comments={entry.comments} />}
     </div>
   )
 }

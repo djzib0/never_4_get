@@ -7,7 +7,7 @@ import { FaRegCircle } from 'react-icons/fa6'
 import { RiStickyNoteAddLine } from 'react-icons/ri'
 import { IoTrashOutline } from 'react-icons/io5'
 import { deleteEntryPosition, updateEntryPosition } from '@/lib/actions'
-import Modal from '../modal/Modal'
+import Modal from '../../modal/Modal'
 
 const EntryPosition = ({entryPosition, entryId}: {entryPosition: EntryPositionType, entryId: string}) => {
  

@@ -2,7 +2,7 @@ import React from 'react';
 import EntryCommentForm from './entryCommentForm/EntryCommentForm';
 import EntryMenu from './entryMenu/EntryMenu';
 import { EntryPositionType, EntryType } from '@/lib/types';
-import EntryPosition from '../entryPosition/EntryPosition';
+import EntryPosition from './entryPosition/EntryPosition';
 
 const EntryDetails = ({entryData, entryId}: {entryData: EntryType; entryId: string}) => {
 
