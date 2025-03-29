@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import { EntryPositionType, EntryType, UserSettingsType } from "./types";
+import EntryDetails from "@/components/entryDetails/EntryDetails";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntry = async (prevState: any, formData: FormData) => {
@@ -109,8 +110,6 @@ export const addEntryComment = async (prevState: any, formData: FormData) => {
     'use server'
 
     const {comment, entryId} = Object.fromEntries(formData)
-    console.log(comment, "comment")
-    console.log(entryId, "entry Id")
 
     try {
         connectToDb();
@@ -129,6 +128,30 @@ export const addEntryComment = async (prevState: any, formData: FormData) => {
     } catch (error) {
         return {error: error}
     }
+}
+
+export const updateEntryComment = async (commentId: string, newComment: string) => {
+    'use server'
+
+    'use server'
+
+    console.log(commentId, newComment)
+    // const {commentId, entryId} = Object.fromEntries(formData)
+    
+    // try {
+    //     connectToDb();
+    
+    //     const update = {$push: {note: newComment._id}};
+
+    //     await EntryComment.findByIdAndUpdate(entryId, update, {new: true})
+    //     .populate("comments").exec();
+
+    //     revalidatePath("/entries")
+    //     return {...prevState, success: true}
+
+    // } catch (error) {
+    //     return {error: error}
+    // }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -7,7 +7,7 @@ import EntryNote from './entryNote/EntryNote';
 const EntryNotes = ({comments, handleClose, entryId}: {comments: EntryCommentType[] ;handleClose: () => void; entryId: string}) => {
 
   const commentsArr = comments.length > 0 && comments.map((comment) => {
-    return <EntryNote key={comment._id} comment={comment.comment} entryId={entryId}/>
+    return <EntryNote key={comment._id} comment={comment} entryId={entryId}/>
   })
 
   return (
