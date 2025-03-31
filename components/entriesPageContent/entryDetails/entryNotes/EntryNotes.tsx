@@ -1,7 +1,9 @@
+'use client'
 import { EntryCommentType } from '@/lib/types';
 import React from 'react';
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import EntryNote from './entryNote/EntryNote';
+import EntryCommentForm from '../entryCommentForm/EntryCommentForm';
 
 
 const EntryNotes = ({comments, handleClose, entryId}: {comments: EntryCommentType[] ;handleClose: () => void; entryId: string}) => {
@@ -11,7 +13,7 @@ const EntryNotes = ({comments, handleClose, entryId}: {comments: EntryCommentTyp
   })
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/30 dark:bg-black/20">
+    <section className="fixed inset-0 flex items-center justify-center bg-black/30 dark:bg-black/20 z-10">
       <div className="relative bg-white py-4 rounded-lg shadow-lg w-4/5 max-h-[50vh] overflow-y-auto text-center scroll-m-0">
 
         <button 
@@ -21,11 +23,14 @@ const EntryNotes = ({comments, handleClose, entryId}: {comments: EntryCommentTyp
           <IoMdCloseCircleOutline className="w-7 h-7" />
         </button>
 
-        <h2 className="text-xl font-semibold dark:text-black">Centered Component</h2>
-        <p className="text-gray-600">This blocks background interaction.</p>
+        <h2 className="text-xl font-semibold dark:text-black">Comments</h2>
+        <EntryCommentForm entryId={entryId} />
+        {!commentsArr && 
+        <>
+        There are no comments.</>}
         {commentsArr}
       </div>
-    </div>
+    </section>
   )
 }
 

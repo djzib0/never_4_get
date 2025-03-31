@@ -1,5 +1,4 @@
 import React from 'react';
-import EntryCommentForm from './entryCommentForm/EntryCommentForm';
 import EntryMenu from './entryMenu/EntryMenu';
 import { EntryPositionType, EntryType } from '@/lib/types';
 import EntryPosition from './entryPosition/EntryPosition';
@@ -27,8 +26,8 @@ const EntryDetails = ({entryData, entryId}: {entryData: EntryType; entryId: stri
   })
   return (
     <div className='content__container'>
+      <h1 className='text-[#697565] text-3xl mb-4 uppercase font-semibold'>{entryData.title}</h1>
       <EntryMenu entry={entryData}/>
-      <EntryCommentForm entryId={entryId} />
       {unfinishedEntryPositionsArr}
       {finishedEntryPositions.length > 0 && 
         <div>

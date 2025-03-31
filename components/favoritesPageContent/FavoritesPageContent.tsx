@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import EntryElement from '../entryElement/EntryElement';
+import EntryElement from '../entriesPageContent/entryElement/EntryElement';
 import { EntryType } from '@/lib/types';
 import FilterForm from '../filterForm/FilterForm';
 import Link from 'next/link';

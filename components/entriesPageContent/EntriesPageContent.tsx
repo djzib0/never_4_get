@@ -1,7 +1,7 @@
 'use client'
 import { EntryType } from '@/lib/types';
 import React, { useState } from 'react'
-import EntryElement from '../entryElement/EntryElement';
+import EntryElement from './entryElement/EntryElement';
 import FilterForm from '../filterForm/FilterForm';
 
 const EntriesPageContent = ({entries}: {entries: EntryType[]}) => {

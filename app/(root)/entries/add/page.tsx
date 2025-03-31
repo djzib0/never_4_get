@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import EntryForm from '@/components/entryForm/EntryForm'
+import EntryForm from '@/components/entriesPageContent/entryForm/EntryForm'
 import { redirect } from 'next/navigation';
 import React from 'react'
 

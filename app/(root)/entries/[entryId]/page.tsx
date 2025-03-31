@@ -1,8 +1,5 @@
-import EntryCommentForm from '@/components/entryDetails/entryCommentForm/EntryCommentForm';
-import EntryDetails from '@/components/entryDetails/EntryDetails';
-import EntryMenu from '@/components/entryDetails/entryMenu/EntryMenu';
-import EntryPosition from '@/components/entryDetails/entryPosition/EntryPosition';
-import { EntryPositionType, EntryType } from '@/lib/types';
+import EntryDetails from '@/components/entriesPageContent/entryDetails/EntryDetails';
+import { EntryType } from '@/lib/types';
 import { getEntryData } from '@/lib/utils';
 import React from 'react';
 

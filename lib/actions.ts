@@ -6,7 +6,6 @@ import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import { EntryPositionType, EntryType, UserSettingsType } from "./types";
-import EntryDetails from "@/components/entryDetails/EntryDetails";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntry = async (prevState: any, formData: FormData) => {
@@ -112,7 +111,7 @@ export const addEntryComment = async (prevState: any, formData: FormData) => {
     const {comment, entryId} = Object.fromEntries(formData)
 
     try {
-        connectToDb();
+        await connectToDb();
         const newComment = await EntryComment.create({
             comment: comment
         })
@@ -130,28 +129,83 @@ export const addEntryComment = async (prevState: any, formData: FormData) => {
     }
 }
 
-export const updateEntryComment = async (commentId: string, newComment: string) => {
+export const editEntryComment = async (commentId: string, newComment: string) => {
+    'use server'
+    
+    try {
+        await connectToDb();
+    
+        const updatedComment = await EntryComment.findByIdAndUpdate(
+            commentId,
+            {comment: newComment},
+            {new: true, runValidators: true}
+        )
+
+        if (!updatedComment) {
+            throw new Error("Comment not found")
+        }
+
+        revalidatePath("/entries")
+        return {success: true}
+
+    } catch (error) {
+        return {error: error}
+    }
+}
+
+export const deleteEntryComment = async (commentId: string, entryId: string) => {
     'use server'
 
+    try {
+        await connectToDb();
+
+        const deletedComment = await EntryComment.findByIdAndDelete(commentId)
+
+        if (!deletedComment) {
+            throw new Error("Comment not found.");
+        }
+
+        const updatedEntry = await Entry.findByIdAndUpdate(
+            entryId,
+            {$pull: {comments: commentId}},
+            {new: true}
+        )
+
+        if (!updatedEntry) {
+            throw new Error ("Entry not found")
+        }
+
+        revalidatePath("/entries")
+        return {success: true}
+
+    } catch (error) {
+        return {error: error}
+    }
+}
+
+export const addPositionNote = async (entryPositionId: string, note: string) => {
     'use server'
 
-    console.log(commentId, newComment)
-    // const {commentId, entryId} = Object.fromEntries(formData)
-    
-    // try {
-    //     connectToDb();
-    
-    //     const update = {$push: {note: newComment._id}};
+    try {
+        
+        await connectToDb();
 
-    //     await EntryComment.findByIdAndUpdate(entryId, update, {new: true})
-    //     .populate("comments").exec();
+        const newNote = await EntryPosition.findByIdAndUpdate(
+            entryPositionId,
+            {$set: {note: note}},
+            {new: true}
+        )
 
-    //     revalidatePath("/entries")
-    //     return {...prevState, success: true}
+        if (!newNote) {
+            throw new Error("Entry position not found")
+        }
 
-    // } catch (error) {
-    //     return {error: error}
-    // }
+        revalidatePath("/entries")
+        return {success: true}
+
+    } catch (error) {
+        return {error: error}
+    }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -170,9 +224,7 @@ export const handleSignIn = async (prevState: any, formData: FormData) => {
             return {error: "Wrong username or password!"}
         } else {
             redirect("/")
-            return {success: "Logged in!"}
         }
-        throw error   
     }
 }
 

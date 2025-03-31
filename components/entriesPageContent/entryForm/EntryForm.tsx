@@ -1,7 +1,7 @@
 'use client'
 import { addEntry } from '@/lib/actions'
 import React, { useActionState, useEffect, useState } from 'react'
-import Button from '../button/Button'
+import Button from '../../button/Button'
 import { redirect } from 'next/navigation'
 
 const EntryForm = ({userId}: {userId: string}) => {

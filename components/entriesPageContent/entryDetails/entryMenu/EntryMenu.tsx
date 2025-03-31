@@ -15,8 +15,6 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
         entry
   )
 
-  console.log(entry, "entry data")
-
   // state variables
   const [isCommentsComponentOn, setIsCommentsComponentOn] = useState(false);
   const [isAddPositionFormOn, setIsAddPositionFormOn] = useState(false);
