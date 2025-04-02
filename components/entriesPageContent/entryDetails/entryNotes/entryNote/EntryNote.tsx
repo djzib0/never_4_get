@@ -84,7 +84,7 @@ const EntryNote = ({entryId, comment}: {entryId: string; comment: EntryCommentTy
 
   const handleCommentUpdate = async (commentId: string, newComment: string) => {
     const response = await editEntryComment(commentId, newComment);
-    console.log(newComment)
+
     if (response.success) {
       setFormData(prevState => {
         return {
@@ -92,11 +92,14 @@ const EntryNote = ({entryId, comment}: {entryId: string; comment: EntryCommentTy
           comment: newComment
         }
       })
+
       toggleEdit(false);
-      toggleToastNotification('info', 'Comment updated')
-      setTimeout(() => {
-        setIsToastNotificationOn(false);
-      }, 2000);
+
+      toggleToastNotification('info', 'Comment updated');
+
+      // setTimeout(() => {
+      //   setIsToastNotificationOn(false);
+      // }, 2000);
     } else {
       toggleToastNotification('error', "Failed to edit comment")
       setTimeout(() => {
@@ -110,14 +113,14 @@ const EntryNote = ({entryId, comment}: {entryId: string; comment: EntryCommentTy
 
     if (response.success) {
       toggleToastNotification('alert', 'Comment deleted');
-      setTimeout(() => {
-        setIsToastNotificationOn(false);
-      }, 2000);
+      // setTimeout(() => {
+      //   setIsToastNotificationOn(false);
+      // }, 2000);
     } else {
       toggleToastNotification('error', 'Failed to delete comment');
-      setTimeout(() => {
-        setIsToastNotificationOn(false);
-      }, 2000);
+      // setTimeout(() => {
+      //   setIsToastNotificationOn(false);
+      // }, 2000);
     }
   }
   

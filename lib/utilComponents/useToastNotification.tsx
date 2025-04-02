@@ -48,27 +48,29 @@ const useMsgBox = () => {
       notificationText: string
     ) => {
 
+    setIsToastNotificationOn(false)
+
     setToastNotificationBody({
       ...toastNotificationBody,
       text: notificationText,
       type: notificationType
     })
     setIsToastNotificationOn(true)
-    // setTimeout(() => {
-    //   setIsToastNotificationOn(false)
-    //   setToastNotificationBody({
-    //     text: "",
-    //     type: undefined,
-    //     headerText: ""
-    //   })
-    // }, 2000);
+    setTimeout(() => {
+      setIsToastNotificationOn(false)
+      setToastNotificationBody({
+        text: "",
+        type: undefined,
+        headerText: ""
+      })
+    }, 2000);
   }
 
 
 
   const ToastNotification = () => {
     return (
-      <div className='fixed left-1/2 -translate-x-1/2 bottom-[100px] flex justify-between items-center w-[320px] h-[75px] p-0 m-0 text-black shadow-md border border-gray-400 z-50'>
+      <div className='fixed left-1/2 -translate-x-1/2 bottom-[100px] flex justify-between items-center w-[320px] h-[75px] p-0 m-0 text-black shadow-md border border-gray-400 z-50 animate-show-hide'>
         {toastNotificationBody.type === "success" && <div className='flex flex-col justify-center items-center w-1/5 h-full bg-[#00ab3a]'>
           <AiOutlineCheck className='text-3xl text-white' />
         </div>}

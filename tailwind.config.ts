@@ -31,10 +31,16 @@ export default {
           "90%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+        growUp: {
+          "0%": { transform: "scaleX(0) scaleY(0)", opacity: "0" },
+          "100%": { transform: "scaleX(1) scaleY(1)", opacity: "1" },
+        },
       },
       animation: {
         "show-hide": "show 0.2s ease-in, hide 2s ease-in",
+        "grow-up": "growUp 0.3s ease-out"
       },
+      
     },
   },
   plugins: [],
