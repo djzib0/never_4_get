@@ -6,20 +6,20 @@ const EntryCommentForm = ({entryId} : {entryId: string}) => {
 
   const [state, formAction] = useActionState(addEntryComment, null)
   
-    // handling hidden data which will not be provided by user
-      const [hiddenFormData, setHiddenFormData] = useState({
-        entryId
-      })
-  
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
-      const {name, value, type} = e.target
-      setHiddenFormData(prevFormData => {
-        return {
-          ...prevFormData,
-          [name]: type === "checkbox" && (e.target instanceof HTMLInputElement) ? e.target.checked : value,
-        }
-      })
-    }
+  // handling hidden data which will not be provided by user
+    const [hiddenFormData, setHiddenFormData] = useState({
+      entryId
+    })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
+    const {name, value, type} = e.target
+    setHiddenFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" && (e.target instanceof HTMLInputElement) ? e.target.checked : value,
+      }
+    })
+  }
     
   return (
     <form action={formAction} className='w-1/1 flex flex-row justify-between gap-4 mx-4 my-2 text-gray-900 !z-10'>

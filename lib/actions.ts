@@ -29,6 +29,11 @@ export const addEntry = async (prevState: any, formData: FormData) => {
     }
 }
 
+export const updateEntryTitle = async (newTitle: string) => {
+    'use server'
+    console.log("updating new title:", newTitle)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntryPosition = async (prevState: any, formData: FormData) => {
     'use server'

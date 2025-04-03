@@ -2,7 +2,7 @@
 import { CiEdit } from 'react-icons/ci';
 import { IoTrashOutline } from 'react-icons/io5';
 
-const EntryPopUpMenu = ({isOn}: {isOn: boolean}) => {
+const EntryPopUpMenu = ({isOn, toggleEdit}: {isOn: boolean; toggleEdit: () => void}) => {
 
   return (
     <div
@@ -10,7 +10,7 @@ const EntryPopUpMenu = ({isOn}: {isOn: boolean}) => {
         isOn ? "animate-grow-up" : "hidden"
       }`}
     >
-      <CiEdit />
+      <CiEdit onClick={() => toggleEdit()}/>
       <IoTrashOutline />
     </div>
   );
