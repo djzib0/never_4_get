@@ -4,15 +4,16 @@ import { PiDotsThreeCircle } from 'react-icons/pi';
 import EntryPopUpMenu from '../entryPopUpMenu/EntryPopUpMenu';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AiOutlineCheck } from 'react-icons/ai';
-import { updateEntryTitle } from '@/lib/actions';
+import { EntryType } from '@/lib/types';
+import { updateEntry } from '@/lib/actions';
 
-const EntryTitle = ({entryTitle}: {entryTitle: string}) => {
+const EntryTitle = ({entry}: { entry: EntryType}) => {
 
   // state variables
   const [isPopUpMenuOn, setIsPopUpMenuOn] = useState<boolean>(false);
   const [isEditTitleOn, setIsEditTitleOn] = useState<boolean>(false);
   const [formData, setFormData] = useState({
-    entryTitle: entryTitle
+    entryTitle: entry.title
   })
 
   // useRef hook
@@ -37,11 +38,11 @@ const EntryTitle = ({entryTitle}: {entryTitle: string}) => {
 
   const cancelEditTitle = () => {
     setIsEditTitleOn(false);
-    if (formData.entryTitle !== entryTitle) {
+    if (formData.entryTitle !== entry.title) {
       setFormData(prevState => {
         return {
           ...prevState,
-          entryTitle: entryTitle
+          entryTitle: entry.title
         }
       })
     }
@@ -57,6 +58,12 @@ const EntryTitle = ({entryTitle}: {entryTitle: string}) => {
     })
   }
 
+  const handleTitleUpdate = (newEntry: EntryType) => {
+    updateEntry(newEntry);
+    setIsEditTitleOn(false);
+  }
+
+
   // set states to false after first render
   useEffect(() => {
     setIsEditTitleOn(false)
@@ -64,32 +71,31 @@ const EntryTitle = ({entryTitle}: {entryTitle: string}) => {
   }, [])
 
   return (
-    <div className='relative flex flex-row justify-between items-center mb-4 text-[#697565] text-3xl uppercase font-semibold'>
+    <div className='relative flex flex-row gap-4 justify-between items-center mb-4 text-[#697565] text-3xl font-semibold'>
       {isEditTitleOn ?
-        <div>
-          <input 
-            placeholder='Entry title'
-            name='entryTitle'
-            value={formData.entryTitle}
-            type='text'
-            onChange={handleChange}
-            ref={textRef}
-          />
-        </div>
+        <input 
+          placeholder='Entry title'
+          name='entryTitle'
+          value={formData.entryTitle}
+          type='text'
+          onChange={handleChange}
+          ref={textRef}
+          className='w-full px-2 rounded-md outline-none resize-none border border-gray-400'
+        />
         :
-        <h1>{entryTitle}</h1>
+        <h1>{entry.title}</h1>
       }
 
       {isEditTitleOn ?
-        <div className='flex flex-row justify-center items-center'>
-          {entryTitle !== formData.entryTitle && <AiOutlineCheck onClick={() => updateEntryTitle(formData.entryTitle)} />}
+        <div className='flex flex-row justify-center items-center border border-transparent'>
+          {entry.title !== formData.entryTitle && <AiOutlineCheck onClick={() => handleTitleUpdate({...entry, title: formData.entryTitle})} />}
           <IoMdCloseCircleOutline onClick={cancelEditTitle}/>
         </div>
         :
         <PiDotsThreeCircle onClick={togglePopUpMenu} />
       }
 
-      {isPopUpMenuOn && <EntryPopUpMenu isOn={isPopUpMenuOn} toggleEdit={toggleEditTitle} />}
+      {isPopUpMenuOn && <EntryPopUpMenu isOn={isPopUpMenuOn} toggleEdit={toggleEditTitle} entryId={entry._id} />}
 
     </div>
   )

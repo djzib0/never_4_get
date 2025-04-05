@@ -2,8 +2,6 @@ import React from 'react';
 import EntryMenu from './entryMenu/EntryMenu';
 import { EntryPositionType, EntryType } from '@/lib/types';
 import EntryPosition from './entryPosition/EntryPosition';
-import { PiDotsThreeCircle } from 'react-icons/pi';
-import EntryPopUpMenu from './entryPopUpMenu/EntryPopUpMenu';
 import EntryTitle from './entryTitle/EntryTitle';
 
 const EntryDetails = ({entryData, entryId}: {entryData: EntryType; entryId: string}) => {
@@ -30,9 +28,7 @@ const EntryDetails = ({entryData, entryId}: {entryData: EntryType; entryId: stri
 
   return (
     <div className='content__container'>
-      <EntryTitle entryTitle={entryData.title}/>
-
-      <EntryPopUpMenu />
+      <EntryTitle entry={entryData}/>
   
       <EntryMenu entry={entryData}/>
       {unfinishedEntryPositionsArr}

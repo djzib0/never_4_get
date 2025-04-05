@@ -347,6 +347,21 @@ export const updateEntry = async (entry: EntryType) => {
     return response.json()
 }
 
+export const deleteEntry = async (entryId: string) => {
+    'use server'
+
+    try {
+        await connectToDb();
+
+        await Entry.findByIdAndDelete(entryId);
+
+
+    } catch (error) {
+        console.log(error);
+        throw new Error("Comment not found.");
+    }
+}
+
 export const getEntriesData = async (userId: string) => {
     const res = await fetch(`${process.env.API_URL}/api/entries/all/${userId}`)
   
