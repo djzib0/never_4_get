@@ -60,7 +60,7 @@ export const addEntryPosition = async (prevState: any, formData: FormData) => {
         return {...prevState, success: true}
 
     } catch (error) {
-        return {error: error}
+        console.log(error, "error")
     }
 }
 

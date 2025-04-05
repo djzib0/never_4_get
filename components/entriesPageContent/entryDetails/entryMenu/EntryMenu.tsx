@@ -72,7 +72,7 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
       {isToastNotificationOn && <ToastNotification />}
       <div className='w-full flex flex-row justify-start gap-4 mb-4 text-[#626F47] dark:text-[#3C3D37]'>
         <button 
-          className='flex flex-row items-center text-base w-1/2 font-medium bg-yellow-300 border-2 border-[#626F47] dark:border-[#FEFAE0] shadow-md px-2 py-2 rounded-md'
+          className={`flex flex-row items-center text-base w-1/2 font-medium bg-yellow-300 border-2 border-[#626F47] dark:border-[#FEFAE0] shadow-md px-2 py-2 rounded-md`}
           onClick={() => handleActiveUpdate({...entry, isActive: !entry.isActive})}
         >
           {optimisticEntry.isActive ? <IoMdCheckmarkCircleOutline className='!text-[#007AFF] text-2xl' /> :  <IoMdCloseCircleOutline className='!text-[#B0B0B0] text-2xl' />} 
@@ -80,7 +80,7 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
         </button>
 
         <button 
-          className='flex flex-row items-center w-1/2 text-base font-medium bg-yellow-300 border-2 border-[#626F47] dark:border-[#FEFAE0] shadow-md px-2 py-2 rounded-md'
+          className={`flex flex-row items-center text-base w-1/2 font-medium bg-yellow-300 border-2 border-[#626F47] dark:border-[#FEFAE0] shadow-md px-2 py-2 rounded-md`}
           onClick={() => handleFavoriteUpdate({...entry, isFavorite: !entry.isFavorite})}
         >
           {optimisticEntry.isFavorite ? <MdFavorite className='!text-red-600 text-2xl' /> : <MdFavoriteBorder className='!text-red-300 text-2xl' />} 
@@ -91,14 +91,14 @@ const EntryMenu = ({entry} : {entry: EntryType}) => {
 
       <div className='w-full flex flex-row justify-start gap-4 mb-4 text-[#626F47] dark:text-[#3C3D37]'>
         <button 
-            className='flex flex-row items-center w-1/2 text-base font-medium bg-white border-2 border-[#626F47] dark:border-[#A27B5C] shadow-md px-2 py-2 rounded-md'
+            className={`flex flex-row items-center text-base w-1/2 font-medium border-2 ${isAddPositionFormOn ? `bg-slate-200`: `bg-white`} border-[#626F47] dark:border-[#626F47] shadow-md px-2 py-2 rounded-md`}
             onClick={togglePositionForm}
             >
             <RiMenuAddFill className='text-2xl'/>
             <p className='ml-2'>Add position</p>
           </button>
         <button 
-            className='flex flex-row items-center w-1/2 text-base font-medium bg-white border-2 border-[#626F47] dark:border-[#A27B5C] shadow-md px-2 py-2 rounded-md'
+            className={`flex flex-row items-center text-base w-1/2 font-medium border-2 ${isCommentsComponentOn ? `bg-slate-200`: `bg-white`} border-[#626F47] dark:border-[#626F47] shadow-md px-2 py-2 rounded-md`}
             onClick={toggleCommentsComponentOn}
             >
             <BiSolidCommentDetail className='text-2xl'/>
