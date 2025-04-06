@@ -18,7 +18,7 @@ const FilterForm = ({handleInputChange}: {handleInputChange: (value: string) => 
     <div className='flex flex-row items-center'>
       <button
         onClick={toggleFilter}
-        className='flex flex-row items-center gap-4 bg-yellow-300 h-10 px-2 py-1 border border-[#A4B465] focus:outline-none rounded-tl-sm rounded-bl-sm'
+        className='flex flex-row items-center gap-4 bg-yellow-300 text-black h-10 px-2 py-1 border border-[#A4B465] focus:outline-none rounded-tl-sm rounded-bl-sm'
       >
         Search<IoSearchOutline className='text-xl' />
       </button>

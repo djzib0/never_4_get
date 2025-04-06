@@ -71,7 +71,7 @@ const EntryTitle = ({entry}: { entry: EntryType}) => {
   }, [])
 
   return (
-    <div className='relative flex flex-row gap-4 justify-between items-center mb-4 text-[#697565] text-3xl font-semibold'>
+    <div className='relative flex flex-row gap-4 justify-between items-center mb-4 text-[#626F47] dark:text-[#DCD7C9] text-3xl font-semibold'>
       {isEditTitleOn ?
         <input 
           placeholder='Entry title'

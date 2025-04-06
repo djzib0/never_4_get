@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import EntryElement from '../entriesPageContent/entryElement/EntryElement';
 import FilterForm from '../filterForm/FilterForm';
 import Link from 'next/link';
+import ComponentHeader from '../componentHeader/ComponentHeader';
 
 const HomePageContent = ({entries}: {entries: EntryType[]}) => {
 
@@ -13,9 +14,11 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
   if (entries.length === 0) {
     return (
       <div>
-        You don&apos;t have any entries. Click{" "}
+        You don&apos;t have any active entries. Click{" "}
         <Link href={"/entries/add"} className='underline font-semibold'>here</Link>{" "}
-        to add your first entry.
+        to add your first entry, or{" "}
+        <Link href={"/entries"} className='underline font-semibold'>here</Link>{" "} 
+        to go to the list of your entries.
       </div>
     )
   }
@@ -46,6 +49,7 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
 
   return (
     <div className='flex flex-col gap-2'>
+      <ComponentHeader title='Your active entries' />
       <FilterForm handleInputChange={onInputChange} />
       {entriesLinksArr}
     </div>
