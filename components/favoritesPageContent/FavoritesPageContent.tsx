@@ -4,6 +4,7 @@ import EntryElement from '../entriesPageContent/entryElement/EntryElement';
 import { EntryType } from '@/lib/types';
 import FilterForm from '../filterForm/FilterForm';
 import Link from 'next/link';
+import ComponentHeader from '../componentHeader/ComponentHeader';
 
 const FavoritesPageContent = ({entries}: {entries: EntryType[]}) => {
   // state variables
@@ -45,6 +46,7 @@ const FavoritesPageContent = ({entries}: {entries: EntryType[]}) => {
 
   return (
     <div className='flex flex-col gap-2'>
+      <ComponentHeader title='Your favorites entries' />
       <FilterForm handleInputChange={onInputChange} />
       {entriesLinksArr}
     </div>

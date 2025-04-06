@@ -6,7 +6,7 @@ import React from 'react';
 const EntryPage = async ({params}: {params: Promise<{entryId: string}>}) => {
 
   const {entryId} = await params;
-  const entryData: EntryType[] = await getEntryData(entryId);
+  const entryData: EntryType = await getEntryData(entryId);
 
   
 

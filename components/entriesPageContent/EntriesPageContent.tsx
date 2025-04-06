@@ -3,6 +3,7 @@ import { EntryType } from '@/lib/types';
 import React, { useState } from 'react'
 import EntryElement from './entryElement/EntryElement';
 import FilterForm from '../filterForm/FilterForm';
+import ComponentHeader from '../componentHeader/ComponentHeader';
 
 const EntriesPageContent = ({entries}: {entries: EntryType[]}) => {
   // state variables
@@ -34,6 +35,7 @@ const EntriesPageContent = ({entries}: {entries: EntryType[]}) => {
 
   return (
     <div className='flex flex-col gap-2'>
+      <ComponentHeader title='Your all entries' />
       <FilterForm handleInputChange={onInputChange} />
       {entriesLinksArr}
     </div>

@@ -42,6 +42,8 @@ export default async function RootLayout({
     settings = await getSettingsData(session.user?.id) || defaultSettings;
   }
 
+  console.log(session?.user?.image)
+
   return (
     <html lang="en" className={`${roboto.variable}`}>
       <body
@@ -49,7 +51,7 @@ export default async function RootLayout({
       >
         <SettingsProvider settings={settings} userId={session?.user?.id}>
             <Navbar
-              imgUrl={"https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"}
+              imgUrl={session?.user?.image}
               username={session?.user?.name || ""}
             />
             {children}

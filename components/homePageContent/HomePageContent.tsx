@@ -16,7 +16,7 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
       <div>
         You don&apos;t have any active entries. Click{" "}
         <Link href={"/entries/add"} className='underline font-semibold'>here</Link>{" "}
-        to add your first entry, or{" "}
+        to add a new entry, or{" "}
         <Link href={"/entries"} className='underline font-semibold'>here</Link>{" "} 
         to go to the list of your entries.
       </div>
