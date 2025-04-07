@@ -26,4 +26,5 @@ export const getSettingsData = async (userId: string | undefined) => {
   export const defaultSettings: UserSettingsType = {
     _id: "defaultSettingsId",
     isDarkModeOn: false,
+    imgUrl: "https://i.seadn.io/gae/EJ0jGsyn9HqmIilFVwUL-knd-cOEata2lSJSZgHfs_Tsne6cHJeqG1VJWwmSjw3N97_g8onMzw21ZHsA-IBkVw-s7ZsPHrvpCNZvAlI?auto=format&dpr=1&w=1000"
   }

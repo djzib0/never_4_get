@@ -41,7 +41,7 @@
   }
 
   .avatar__img {
-    @apply rounded-full
+    @apply rounded-full overflow-clip
   }
 
   .form__container {

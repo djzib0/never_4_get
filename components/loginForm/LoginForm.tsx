@@ -3,6 +3,7 @@ import { handleSignIn } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import Button from '../button/Button';
+import Link from 'next/link';
 
 const LoginForm = () => {
 
@@ -25,15 +26,15 @@ const LoginForm = () => {
         <label 
           htmlFor='username'
           className='text-[#697565] dark:text-[#ECDFCC]'
-          >
+        >
           Login
         </label>
         <input
-            className='form__input'
-            type='text'
-            name='username'
-            required
-            />
+          className='form__input'
+          type='text'
+          name='username'
+          required
+        />
 
         <label 
           htmlFor='password'
@@ -56,6 +57,12 @@ const LoginForm = () => {
           >
             {isPasswordHidden ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
+        </div>
+        <div className='flex flex-row mt-4'>
+          <p className='mr-2'>Not a member yet?</p>
+          <Link href="/register">
+            <b className='text-blue-500'>Register</b>
+          </Link>
         </div>
       </form>
     </>

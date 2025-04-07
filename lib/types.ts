@@ -23,6 +23,7 @@ export type EntryPositionType = {
 export type UserSettingsType = {
     _id: string,
     isDarkModeOn: boolean;
+    imgUrl: string;
     __v?: number
 }
 

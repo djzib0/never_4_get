@@ -54,7 +54,7 @@ export default async function RootLayout({
       >
         <SettingsProvider settings={settings} userId={session?.user?.id}>
             <Navbar
-              imgUrl={session?.user?.image}
+              imgUrl={settings.imgUrl}
               username={session?.user?.name || ""}
             />
             {children}

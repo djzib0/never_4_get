@@ -1,6 +1,8 @@
 'use client'
 import { registerNewUser } from '@/lib/actions'
 import React, { useActionState, useState } from 'react'
+import Button from '../button/Button'
+import Link from 'next/link'
 
 const RegisterForm = () => {
 
@@ -30,26 +32,48 @@ const RegisterForm = () => {
 
   return (
     <>
-      <form action={formAction} className='form__container'>
+      <form 
+        action={formAction} 
+        className='flex flex-col bg-[#DEE5D4] dark:bg-[#697565] w-full p-4 rounded-md'
 
-        <label htmlFor='username' className='label'>username</label>
+      >
+
+        <label 
+          htmlFor='username' 
+          className='text-[#697565] dark:text-[#ECDFCC]'
+        >
+          Username
+        </label>
         <input
+          className='form__input'
           type='text'
           id='username'
           name='username'
           required
         />
 
-        <label htmlFor='password' className='label'>Password</label>
+        <label 
+          htmlFor='password' 
+          className='text-[#697565] dark:text-[#ECDFCC]'
+        >
+          Password
+        </label>
         <input
+          className='form__input'
           type='password'
           id='password'
           name='password'
           required
         />
 
-        <label htmlFor='passwordRepeat' className='label'>Password repeat</label>
+        <label 
+          htmlFor='password' 
+          className='text-[#697565] dark:text-[#ECDFCC]'
+        >
+          Password repeat
+        </label>
         <input
+          className='form__input'
           type='password'
           id='passwordRepeat'
           name='passwordRepeat'
@@ -57,8 +81,14 @@ const RegisterForm = () => {
         />
         {state?.error && <p>{state?.error}</p>}
 
-        <label htmlFor='email' className='label'>Email</label>
+        <label 
+          htmlFor='password' 
+          className='text-[#697565] dark:text-[#ECDFCC]'
+        >
+          Email
+        </label>
         <input
+          className='form__input'
           type='email'
           id='email'
           name='email'
@@ -73,7 +103,15 @@ const RegisterForm = () => {
           onChange={handleChange}
           hidden
         />
-      <button type='submit'>Register</button>
+        <div className='flex flex-row justify-between items-center mt-4'>
+          <Button btnHtmlType='submit' title='register' btnVariant='positive' btnHeight='medium' btnWidth='full' />
+        </div>
+        <div className='flex flex-row mt-4'>
+          <p className='mr-2'>Already have an account?</p>
+          <Link href="/login">
+            <b className='text-blue-500'>Login</b>
+          </Link>
+        </div>
       </form>
     </>
   )
