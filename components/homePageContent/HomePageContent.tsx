@@ -15,9 +15,9 @@ const HomePageContent = ({entries}: {entries: EntryType[]}) => {
     return (
       <div>
         You don&apos;t have any active entries. Click{" "}
-        <Link href={"/entries/add"} className='underline font-semibold'>here</Link>{" "}
+        <Link href={"/entries/add"} className='underline font-semibold text-blue-500 dark:text-yellow-300'>here</Link>{" "}
         to add a new entry, or{" "}
-        <Link href={"/entries"} className='underline font-semibold'>here</Link>{" "} 
+        <Link href={"/entries"} className='underline font-semibold text-blue-500 dark:text-yellow-300'>here</Link>{" "} 
         to go to the list of your entries.
       </div>
     )

@@ -14,9 +14,6 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
   // utilize context
   const { changeTheme} = useSettings();
 
-  console.log(imgUrl, " img url")
-  
-
   return (
     <nav className={`nav__container fixed top-0 border-[#FFCF50] border-b-2`}>
 
@@ -43,7 +40,7 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
             className='avatar__img'
             unoptimized
             onError={(e) => {
-              e.currentTarget.src = "https://i.seadn.io/gae/EJ0jGsyn9HqmIilFVwUL-knd-cOEata2lSJSZgHfs_Tsne6cHJeqG1VJWwmSjw3N97_g8onMzw21ZHsA-IBkVw-s7ZsPHrvpCNZvAlI?auto=format&dpr=1&w=1000"
+              e.currentTarget.src = "/images/avatarplaceholder.png"
             }}
             />
             : <PiUserCircle className='w-12 h-12 -m-1' />}

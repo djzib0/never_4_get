@@ -18,7 +18,7 @@ const FavoritesPageContent = ({entries}: {entries: EntryType[]}) => {
     return (
       <div>
         You don&apos;t have any entries added to favorites. Click{" "}
-        <Link href={"/entries"} className='underline font-semibold'>here</Link>{" "}
+        <Link href={"/entries"} className='underline font-semibold text-blue-500 dark:text-yellow-300'>here</Link>{" "}
         to see your all entries.
       </div>
     )

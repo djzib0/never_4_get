@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import EntryElement from './entryElement/EntryElement';
 import FilterForm from '../filterForm/FilterForm';
 import ComponentHeader from '../componentHeader/ComponentHeader';
+import Link from 'next/link';
 
 const EntriesPageContent = ({entries}: {entries: EntryType[]}) => {
   // state variables
@@ -32,6 +33,16 @@ const EntriesPageContent = ({entries}: {entries: EntryType[]}) => {
     />
     )
   })
+
+  if (entries.length === 0) {
+    return (
+      <div>
+        You don&apos;t have any entries. Click{" "}
+        <Link href={"/entries/add"} className='underline font-semibold text-blue-500 dark:text-yellow-300'>here</Link>{" "}
+        to add a new entry.
+      </div>
+    )
+  }
 
   return (
     <div className='flex flex-col gap-2'>
