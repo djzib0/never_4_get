@@ -24,7 +24,7 @@ const EntryCommentForm = ({entryId} : {entryId: string}) => {
   return (
     <form action={formAction} className='w-1/1 flex flex-row justify-between gap-4 mx-4 my-2 text-gray-900 !z-10'>
         <input
-          className='flex w-full text-start pl-2 min-h-4 max-h-full rounded-md outline-none resize-none border border-gray-400'
+          className='flex w-full text-start text-base pl-2 min-h-4 max-h-full rounded-md outline-none resize-none border border-gray-400'
           type='text'
           name='comment'
           max={3}

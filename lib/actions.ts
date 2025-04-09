@@ -29,11 +29,6 @@ export const addEntry = async (prevState: any, formData: FormData) => {
     }
 }
 
-export const updateEntryTitle = async (newTitle: string) => {
-    'use server'
-    console.log("updating new title:", newTitle)
-}
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addEntryPosition = async (prevState: any, formData: FormData) => {
     'use server'
@@ -241,7 +236,6 @@ export const handleSignOut = async () => {
     } catch (error: any) {
         console.log(error)
         if (error.message.includes("NEXT_REDIRECT")) {
-            console.log("there is an next_redirect error")
             redirect("/login")
         }
         return {error: "An error during logout has occured"}
@@ -266,7 +260,6 @@ export const registerNewUser = async (prevState: any, formData: any) => {
 
         // if user exists, return an error
         if (user) {
-            console.log("This user already exists, my friend.")
             return {error: "User already exists."}
         }
 
@@ -275,7 +268,6 @@ export const registerNewUser = async (prevState: any, formData: any) => {
         const userEmail = await User.findOne({email})
 
         if (userEmail) {
-            console.log("This email is used, my friend.")
             return {error: "This email is already registered."}
         }
 
@@ -296,7 +288,6 @@ export const registerNewUser = async (prevState: any, formData: any) => {
         })
 
         await newUser.save();
-        console.log("new user saved to db")
 
         return {...prevState, success: true}
     } catch (err) {

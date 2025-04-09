@@ -12,8 +12,7 @@ const EntriesPage = async () => {
   if (!session?.user?.id) {
     redirect("/login")
   }
-  
-  console.log(session.user.id, 'userId')
+
   const entries = session.user.id && await getEntriesData(session.user.id);
 
   return (

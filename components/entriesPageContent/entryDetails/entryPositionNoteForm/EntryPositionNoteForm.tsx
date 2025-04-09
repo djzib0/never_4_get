@@ -47,7 +47,7 @@ const EntryPositionNoteForm = ({entryPositionId, note, closeForm}: {entryPositio
 
         <form className='w-1/1 flex flex-col justify-between gap-4 mx-4 my-2 text-gray-900 !z-10'>
           <textarea
-            className='flex w-full text-start pl-2 min-h-4 max-h-full rounded-md outline-none resize-none border border-gray-400'
+            className='flex w-full h-32 text-start text-base pl-2 rounded-md outline-none resize-none border border-gray-400'
             name="note"
             placeholder="Enter new note"
             onChange={handleChange}

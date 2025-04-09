@@ -58,6 +58,7 @@ const LoginForm = () => {
             {isPasswordHidden ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
         </div>
+        {state?.error && <p className='text-red-500 font-semibold mt-2'>{state.error}</p>}
         <div className='flex flex-row mt-4'>
           <p className='mr-2'>Not a member yet?</p>
           <Link href="/register">

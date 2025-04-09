@@ -39,10 +39,8 @@ export default async function RootLayout({
   let settings = defaultSettings;
 
   if (session) {
-    settings = await getSettingsData(session.user?.id) || defaultSettings;
+    settings = await getSettingsData(session.user?.id);
   }
-
-  console.log(session?.user?.image)
 
   return (
     <html lang="en" className={`${roboto.variable}`}>

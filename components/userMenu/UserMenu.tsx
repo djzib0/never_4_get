@@ -4,7 +4,7 @@ import UserMenuPosition from './userMenuPosition/UserMenuPosition';
 import { FaUserGear } from "react-icons/fa6";
 import { AiOutlinePoweroff } from "react-icons/ai";
 
-const UserMenu = ({isMenuOn}: {isMenuOn: boolean}) => {
+const UserMenu = ({isMenuOn, toggleMenu}: {isMenuOn: boolean; toggleMenu: () => void}) => {
 
   return (
     <div className={isMenuOn ? `user__menu` : `user__menu invisible`}>
@@ -16,7 +16,7 @@ const UserMenu = ({isMenuOn}: {isMenuOn: boolean}) => {
       <UserMenuPosition
         icon={<AiOutlinePoweroff />}
         title={'Logout'}
-        func={() => (handleSignOut())}
+        func={() => (toggleMenu(), handleSignOut())}
        />
     </div>
   )

@@ -21,7 +21,7 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
         N4G
       </p>
 
-      <div className='flex flex-row gap-8 justify-center items-center'>
+      {username && <div className='flex flex-row gap-8 justify-center items-center'>
         <button onClick={changeTheme}>
           <ThemeSwitcher />
         </button>
@@ -46,9 +46,9 @@ const Navbar = ({imgUrl, username}: {imgUrl: string | undefined | null, username
             : <PiUserCircle className='w-12 h-12 -m-1' />}
           </button>
         </div>
-      </div>
+      </div>}
 
-      <UserMenu isMenuOn={isMenuOn} />
+      <UserMenu isMenuOn={isMenuOn} toggleMenu={toggleUserMenu} />
     </nav>
   )
 }

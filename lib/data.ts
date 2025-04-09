@@ -17,7 +17,7 @@ export const getSettingsData = async (userId: string | undefined) => {
     const res = await fetch(`${process.env.API_URL}/api/settings/${userId}`)
   
     if (!res.ok) {
-      throw new Error("Couldn't not fetch settings data.")
+      return defaultSettings
     }
   
     return res.json();

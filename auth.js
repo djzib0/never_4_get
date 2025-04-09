@@ -53,7 +53,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return user;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-          return null;
+          // return {error: "dupa"};
+          return null
         }
       }
     })
