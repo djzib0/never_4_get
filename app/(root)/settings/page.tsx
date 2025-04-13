@@ -1,4 +1,5 @@
 import { auth } from '@/auth'
+import SettingsPageContent from '@/components/settingsPageContent/SettingsPageContent';
 import { redirect } from 'next/navigation';
 import React from 'react'
 
@@ -12,7 +13,7 @@ const SettingsPage = async () => {
   
   return (
     <div className='content__container'>
-      Settings Container
+      <SettingsPageContent userId={session.user.id} />
     </div>
   )
 }

@@ -316,6 +316,52 @@ export const updateSettings = async (settings: UserSettingsType) => {
       return response.json()
 }
 
+export const updateImgUrlInSettingsByUserId = async (prevState: unknown, formData: FormData) => {
+    'use server'
+
+    const {userId, imgUrl} = Object.fromEntries(formData);
+
+    try {
+        await connectToDb();
+
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return {error: "Can't find user with the given id"}
+        }
+
+        // find user settings
+        const settings = await UserSettings.findById(user.settings)
+
+        if (!settings) {
+            return {error: "Can't find user settings"}
+        }
+
+        settings.imgUrl = imgUrl
+
+        const response = await fetch(`${process.env.API_URL}/api/settings/edit/${settings._id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                { 
+                    ...settings
+                }
+            ), 
+          });
+
+          revalidatePath("/")
+          return response.json()
+
+
+    } catch (error) {
+        return error
+    }
+    // console.log(userId, " in update settings by user id")
+
+}
+
 export const updateEntry = async (entry: EntryType) => {
     'use client'
 
